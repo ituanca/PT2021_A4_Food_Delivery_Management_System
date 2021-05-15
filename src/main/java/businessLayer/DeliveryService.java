@@ -1,15 +1,18 @@
 package businessLayer;
 
+import dataLayer.Serializator;
+
 import java.io.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DeliveryService implements IDeliveryServiceProcessing{
 
     Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<Order, ArrayList<MenuItem>>();
     ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
-    List<BaseProduct> menuBaseProducts;
+    List<BaseProduct> menuBaseProducts = new ArrayList<>();
 
     @Override
     public void importProducts() throws IOException {
@@ -18,32 +21,30 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         BufferedReader br = new BufferedReader(new InputStreamReader(inputFileStream));
         menuBaseProducts = br.lines()
                 .skip(1)
-                .map(mapToItem)
                 .distinct()
+                .map(mapToItem)
                 .collect(Collectors.toList());
         br.close();
-        printMenu(menuBaseProducts);
-
-        Collection<String> list = Arrays.asList("A", "B", "C", "D", "A", "B", "C");
-        List<String> distinctElements = list.stream()
-                .distinct()
-                .collect(Collectors.toList());
-        System.out.println(distinctElements);
+        //printMenu(menuBaseProducts);
+        Serializator serializer = new Serializator();
+        serializer.serializeMenuBaseProducts(menuBaseProducts);
+        serializer.deserializeMenuBaseProducts();
     }
 
     private void printMenu(List<BaseProduct> menuBaseProducts){
         int i = 1;
         for(BaseProduct baseProduct : menuBaseProducts) {
-            System.out.println("id: " + i + " title: " + baseProduct.title + " rating: " + baseProduct.rating + " calories: " + baseProduct.calories + " price: " + baseProduct.price);
-            System.out.println();
+            System.out.println("id: " + i + " title: " + baseProduct.title + " rating: " + baseProduct.rating + " calories: " + baseProduct.calories +
+                    " protein: " + baseProduct.protein + " fat: " + baseProduct.fat + " sodium: " + baseProduct.sodium +  " price: " + baseProduct.price);
             i++;
-            if(i == 2000){
-                break;
-            }
         }
     }
 
-    private Function<String, BaseProduct> mapToItem = (line) -> {
+    private void printItem(BaseProduct item) {
+        System.out.println("title: " + item.title + " rating: " + item.rating + " calories: " + item.calories + " protein: " + item.protein + " fat: " + item.fat + " sodium: " + item.sodium + " price: " + item.price);
+    }
+
+    private final Function<String, BaseProduct> mapToItem = (line) -> {
         String[] p = line.split(",");
         BaseProduct item = new BaseProduct();
         item.setTitle(p[0]);
@@ -57,8 +58,21 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     };
 
     @Override
-    public void addProduct() {
+    public void addProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
+        BaseProduct item = new BaseProduct();
+        item.setTitle(title);
+        item.setRating(rating);
+        item.setCalories(calories);
+        item.setProtein(protein);
+        item.setFat(fat);
+        item.setSodium(sodium);
+        item.setPrice(price);
+        addToList(menuBaseProducts, Stream.of(item));
+        printItem(item);
+    }
 
+    public static<T> void addToList(List<T> target, Stream<T> source) {
+        source.collect(Collectors.toCollection(() -> target));
     }
 
     @Override

@@ -1,9 +1,11 @@
 package businessLayer;
 
-public class BaseProduct extends MenuItem{
+import java.io.Serializable;
 
-    double rating;
-    int calories, protein, fat, sodium;
+public class BaseProduct extends MenuItem implements Serializable {
+
+    public double rating;
+    public int calories, protein, fat, sodium;
 
     public BaseProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
         this.title = title;
@@ -40,4 +42,15 @@ public class BaseProduct extends MenuItem{
     public int getSodium() { return sodium; }
 
     public void setSodium(int sodium) { this.sodium = sodium; }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", rating=" + rating +
+                ", calories=" + calories +
+                ", protein=" + protein +
+                ", fat=" + fat +
+                ", sodium=" + sodium +
+                '}';
+    }
 }

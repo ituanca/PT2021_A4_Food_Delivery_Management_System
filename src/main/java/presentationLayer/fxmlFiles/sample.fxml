@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.Start">
    <children>
       <Button id="btnLogIn" fx:id="btnLogIn" layoutX="209.0" layoutY="284.0" mnemonicParsing="false" onAction="#logIn" text="Log in">

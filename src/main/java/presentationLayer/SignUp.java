@@ -1,5 +1,6 @@
 package presentationLayer;
 
+import dataLayer.FileWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,18 +26,7 @@ public class SignUp implements Initializable {
         nextWindow = window;
     }
 
-    public void writeNewUser() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("src\\main\\resources\\users.txt", true))) {
-            bw.write(getUsername());
-            bw.newLine();
-            bw.write(getPassword());
-            bw.newLine();
-            bw.write(getUserType());
-            bw.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public boolean checkUsernameExistence(){
         try {
@@ -86,16 +76,16 @@ public class SignUp implements Initializable {
 
     public void signUp(ActionEvent actionEvent) throws IOException {
         if(validate()){
-            writeNewUser();
+            FileWriter fileWriter = new FileWriter();
+            fileWriter.writeNewUser(getUsername(), getPassword(), getUserType());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("User created successfully");
             alert.show();
-            String selectedUserType = (String) cbUserType.getValue();
-            if (selectedUserType.equals("administrator")) {
+            if (getUserType().equals("administrator")) {
                 URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
                 Scene scene = new Scene(FXMLLoader.load(url), 500, 500);
                 AdministratorController.create(nextWindow, scene);
-            } else if (selectedUserType.equals("client")) {
+            } else if (getUserType().equals("client")) {
                 URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\client.fxml").toURI().toURL();
                 Scene scene = new Scene(FXMLLoader.load(url), 500, 500);
                 ClientController.create(nextWindow, scene);

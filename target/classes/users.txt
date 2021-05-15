@@ -25,3 +25,9 @@ employee
 anca
 a
 administrator
+adinaLeonte
+bdixhwopq
+client
+mat
+12345
+administrator
