@@ -1,9 +1,16 @@
 package businessLayer;
 
-public abstract class MenuItem {
+import java.io.Serializable;
+
+public abstract class MenuItem implements Serializable {
 
     public String title;
     public Integer price;
+
+    public MenuItem(String title, Integer price) {
+        this.title = title;
+        this.price = price;
+    }
 
     public abstract int computePrice();
 

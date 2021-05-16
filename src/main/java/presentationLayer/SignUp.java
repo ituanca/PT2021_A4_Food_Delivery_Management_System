@@ -1,6 +1,8 @@
 package presentationLayer;
 
-import dataLayer.FileWriter;
+import businessLayer.User;
+import dataLayer.FileManager;
+import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,8 +27,6 @@ public class SignUp implements Initializable {
         window.show();
         nextWindow = window;
     }
-
-
 
     public boolean checkUsernameExistence(){
         try {
@@ -76,8 +76,9 @@ public class SignUp implements Initializable {
 
     public void signUp(ActionEvent actionEvent) throws IOException {
         if(validate()){
-            FileWriter fileWriter = new FileWriter();
-            fileWriter.writeNewUser(getUsername(), getPassword(), getUserType());
+            User user = new User(getUsername(), getPassword(), getUserType());
+            new FileManager().writeNewUser(user);
+            new Serializator().serializeUsers(new FileManager().readUsersFromFile());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("User created successfully");
             alert.show();

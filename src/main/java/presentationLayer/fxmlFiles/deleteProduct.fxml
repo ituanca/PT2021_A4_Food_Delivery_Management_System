@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.DeleteProductController">
    <children>
@@ -12,5 +13,21 @@
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
+      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="54.0" layoutY="212.0" prefHeight="25.0" prefWidth="409.0" style="-fx-background-color: white;" />
+      <Label layoutX="144.0" layoutY="163.0" text="Choose product to delete:">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="377.0" layoutY="446.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
+      <Button id="btnDeleteProduct" fx:id="btnDeleteProduct" layoutX="183.0" layoutY="356.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -2,11 +2,16 @@ package presentationLayer;
 
 import businessLayer.DeliveryService;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class AddProductController {
     private static Stage nextWindow;
@@ -18,6 +23,7 @@ public class AddProductController {
     public TextField tfSodium;
     public TextField tfPrice;
     public Button btnAddProduct;
+    public Button btnGoBack;
 
     DeliveryService deliveryService = new DeliveryService();
 
@@ -64,4 +70,9 @@ public class AddProductController {
 
     private Integer getPrice() { return Integer.parseInt(tfPrice.getText()); }
 
+    public void goBack(ActionEvent actionEvent) throws IOException {
+        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
+        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
+        AdministratorController.create(nextWindow, scene);
+    }
 }

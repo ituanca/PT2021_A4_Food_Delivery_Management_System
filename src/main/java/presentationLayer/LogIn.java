@@ -1,5 +1,7 @@
 package presentationLayer;
 
+import businessLayer.User;
+import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LogIn implements Initializable {
@@ -59,6 +62,17 @@ public class LogIn implements Initializable {
         }
     }
 
+    private boolean checkUserExistenceSerialization(){
+        Serializator serializer = new Serializator();
+        ArrayList<User> users  = serializer.deserializeUsers();
+        for(User user: users){
+            if(getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && getUserType().equals(user.getUserType())){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean validate(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         if(cbUserType.getSelectionModel().isEmpty()){
@@ -71,7 +85,7 @@ public class LogIn implements Initializable {
             alert.show();
             return false;
         }
-        if(!checkUserExistence()){
+        if(!checkUserExistenceSerialization()){
             alert.setContentText("User not found");
             alert.show();
             return false;

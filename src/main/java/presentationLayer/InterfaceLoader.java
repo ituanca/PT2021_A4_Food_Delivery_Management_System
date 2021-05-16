@@ -1,5 +1,7 @@
 package presentationLayer;
 
+import dataLayer.FileManager;
+import dataLayer.Serializator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +22,8 @@ public class InterfaceLoader extends Application {
         stage.setTitle("Food delivery management system");
         Scene scene = new Scene(root, 500, 500);
         window = stage;
+        Serializator serializer = new Serializator();
+        serializer.serializeUsers(new FileManager().readUsersFromFile());
         Start.create(window, scene);
     }
 }

@@ -1,15 +1,13 @@
 package businessLayer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CompositeProduct extends MenuItem {
 
     ArrayList<MenuItem> compositeProduct = new ArrayList<MenuItem>();
 
     public CompositeProduct(String title, int price) {
-        this.title = title;
-        this.price = price;
+        super(title, price);
     }
 
     @Override

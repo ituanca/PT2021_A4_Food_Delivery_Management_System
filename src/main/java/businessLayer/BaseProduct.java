@@ -8,16 +8,12 @@ public class BaseProduct extends MenuItem implements Serializable {
     public int calories, protein, fat, sodium;
 
     public BaseProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
-        this.title = title;
+        super(title, price);
         this.rating = rating;
         this.calories = calories;
         this.protein = protein;
         this.fat = fat;
         this.sodium = sodium;
-        this.price = price;
-    }
-
-    public BaseProduct(){
     }
 
     @Override
@@ -45,12 +41,12 @@ public class BaseProduct extends MenuItem implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString() +
+        return  title +
                 ", rating=" + rating +
                 ", calories=" + calories +
                 ", protein=" + protein +
                 ", fat=" + fat +
                 ", sodium=" + sodium +
-                '}';
+                ", price=" + price;
     }
 }

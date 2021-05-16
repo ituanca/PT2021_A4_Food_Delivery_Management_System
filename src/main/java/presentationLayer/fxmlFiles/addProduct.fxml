@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.AddProductController">
    <children>
       <Label layoutX="177.0" layoutY="65.0" text="Add product">
@@ -57,6 +56,11 @@
       </Label>
       <TextField id="tfPrice" fx:id="tfPrice" layoutX="216.0" layoutY="373.0" prefHeight="25.0" prefWidth="207.0" />
       <Button id="btnAddProduct" fx:id="btnAddProduct" layoutX="184.0" layoutY="427.0" mnemonicParsing="false" onAction="#addProduct" text="Add product">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="377.0" layoutY="446.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
