@@ -4,6 +4,7 @@ import businessLayer.DeliveryService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -30,6 +31,9 @@ public class AdministratorController {
 
     public void importProducts(ActionEvent actionEvent) throws IOException {
         deliveryService.importProducts();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Data was imported successfully");
+        alert.show();
     }
 
     public void addProduct(ActionEvent actionEvent) throws IOException {
@@ -65,4 +69,5 @@ public class AdministratorController {
         Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
         Start.create(nextWindow, scene);
     }
+
 }

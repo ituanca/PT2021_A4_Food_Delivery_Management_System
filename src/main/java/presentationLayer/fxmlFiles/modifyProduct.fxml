@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="presentationLayer.ModifyProductController"
-            prefHeight="500.0" prefWidth="500.0">
 
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.ModifyProductController">
+   <children>
+      <Label layoutX="165.0" layoutY="72.0" text="Modify product">
+         <font>
+            <Font name="Bodoni MT" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="144.0" layoutY="119.0" text="Choose product to modify:">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="50.0" layoutY="151.0" onAction="#selectProduct" prefHeight="25.0" prefWidth="409.0" style="-fx-background-color: white;" />
+      <Label id="lblTitle" fx:id="lblTitle" layoutX="106.0" layoutY="193.0" text="Title:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfTitle" fx:id="tfTitle" layoutX="195.0" layoutY="193.0" prefHeight="0.0" prefWidth="207.0" visible="false" />
+      <Label id="lblRating" fx:id="lblRating" layoutX="106.0" layoutY="223.0" text="Rating:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfRating" fx:id="tfRating" layoutX="195.0" layoutY="223.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblCalories" fx:id="lblCalories" layoutX="106.0" layoutY="253.0" text="Calories:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfCalories" fx:id="tfCalories" layoutX="195.0" layoutY="253.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblProtein" fx:id="lblProtein" layoutX="106.0" layoutY="283.0" text="Protein:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfProtein" fx:id="tfProtein" layoutX="195.0" layoutY="283.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblFat" fx:id="lblFat" layoutX="106.0" layoutY="313.0" text="Fat:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfFat" fx:id="tfFat" layoutX="195.0" layoutY="313.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblSodium" fx:id="lblSodium" layoutX="106.0" layoutY="344.0" text="Sodium:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfSodium" fx:id="tfSodium" layoutX="195.0" layoutY="344.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblPrice" fx:id="lblPrice" layoutX="106.0" layoutY="374.0" text="Price:" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="195.0" layoutY="374.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Button id="btnModifyProduct" fx:id="btnModifyProduct" layoutX="179.0" layoutY="417.0" mnemonicParsing="false" onAction="#modifyProduct" text="Modify product" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="387.0" layoutY="443.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

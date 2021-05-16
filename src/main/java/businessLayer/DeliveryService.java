@@ -26,11 +26,6 @@ public class DeliveryService implements IDeliveryServiceProcessing{
                 .collect(Collectors.toList());
         br.close();
         new Serializator().serializeMenuBaseProducts(menuBaseProducts);
-//        List<BaseProduct> menuBaseProductsAfterDeserialization = new ArrayList<>();
-//        menuBaseProductsAfterDeserialization = new Serializator().deserializeMenuBaseProducts();
-//        for(BaseProduct baseProduct : menuBaseProductsAfterDeserialization){
-//            System.out.println(baseProduct);
-//        }
     }
 
     private final Function<String, BaseProduct> mapToItem = (line) -> {
@@ -54,9 +49,9 @@ public class DeliveryService implements IDeliveryServiceProcessing{
 
     @Override
     public void addProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
-        BaseProduct item = new BaseProduct(title, rating, calories, protein, fat, sodium, price);
-        addToList(menuBaseProducts, Stream.of(item));
-        printItem(item);
+        menuBaseProducts = new Serializator().deserializeMenuBaseProducts();
+        addToList(menuBaseProducts, Stream.of( new BaseProduct(title, rating, calories, protein, fat, sodium, price)));
+        new Serializator().serializeMenuBaseProducts(menuBaseProducts);
     }
 
     public static<T> void addToList(List<T> target, Stream<T> source) {
@@ -64,8 +59,15 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public void deleteProduct() {
+    public void deleteProduct(BaseProduct productToDelete) {
+        List<BaseProduct> menuBaseProducts;
+        menuBaseProducts = getProducts();
+        menuBaseProducts.removeIf(product -> product.toString().equals(productToDelete.toString()));
+        new Serializator().serializeMenuBaseProducts(menuBaseProducts);
+    }
 
+    private List<BaseProduct> getProducts(){
+        return new Serializator().deserializeMenuBaseProducts();
     }
 
     @Override

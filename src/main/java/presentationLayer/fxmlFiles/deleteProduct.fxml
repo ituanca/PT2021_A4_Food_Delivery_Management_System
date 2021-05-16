@@ -19,12 +19,12 @@
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="377.0" layoutY="446.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnDeleteProduct" fx:id="btnDeleteProduct" layoutX="183.0" layoutY="356.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnDeleteProduct" fx:id="btnDeleteProduct" layoutX="183.0" layoutY="356.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="377.0" layoutY="438.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>

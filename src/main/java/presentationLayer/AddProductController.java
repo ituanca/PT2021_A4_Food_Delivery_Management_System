@@ -25,8 +25,6 @@ public class AddProductController {
     public Button btnAddProduct;
     public Button btnGoBack;
 
-    DeliveryService deliveryService = new DeliveryService();
-
     public static void create(Stage window, Scene scene){
         window.setScene(scene);
         window.show();
@@ -41,34 +39,76 @@ public class AddProductController {
             alert.show();
             return false;
         }
+        if(getRating() == -1 || getCalories() == -1 || getProtein() == -1 || getFat() == -1 || getSodium() == -1 || getPrice() == -1 || !getTitle().matches("^(?![\\s.]+$)[a-zA-Z\\s.]*$")){
+            alert.setContentText("Invalid data");
+            alert.show();
+            return false;
+        }
         return true;
     }
 
     public void addProduct(ActionEvent actionEvent) {
         if(validate()){
-            deliveryService.addProduct(getTitle(), getRating(), getCalories(), getProtein(), getFat(), getSodium(), getPrice());
+            new DeliveryService().addProduct(getTitle(), getRating(), getCalories(), getProtein(), getFat(), getSodium(), getPrice());
+            showConfirmation();
         }
+    }
+
+    private void showConfirmation(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Product was added successfully");
+        alert.show();
     }
 
     private String getTitle() { return tfTitle.getText(); }
 
     private Double getRating() {
-        try {
-            return Double.parseDouble(tfRating.getText());
-        }catch(NumberFormatException nfe){
+       try{
+           return Double.parseDouble(tfRating.getText());
+       }catch(NumberFormatException nfe){
             return (double) -1;
+       }
+    }
+
+    private Integer getCalories() {
+        try{
+            return Integer.parseInt(tfCalories.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
         }
     }
 
-    private Integer getCalories() { return Integer.parseInt(tfCalories.getText()); }
+    private Integer getProtein() {
+        try{
+            return Integer.parseInt(tfProtein.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
 
-    private Integer getProtein() { return Integer.parseInt(tfProtein.getText()); }
+    private Integer getFat() {
+        try{
+            return Integer.parseInt(tfFat.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
 
-    private Integer getFat() { return Integer.parseInt(tfFat.getText()); }
+    private Integer getSodium() {
+        try{
+            return Integer.parseInt(tfSodium.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
 
-    private Integer getSodium() { return Integer.parseInt(tfSodium.getText()); }
-
-    private Integer getPrice() { return Integer.parseInt(tfPrice.getText()); }
+    private Integer getPrice() {
+        try{
+            return Integer.parseInt(tfPrice.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();

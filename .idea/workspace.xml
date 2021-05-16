@@ -5,34 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65391103-a3a9-47c9-b3c6-c1a33c5c52d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dataLayer/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/BaseProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/BaseProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataLayer/FileWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataLayer/Serializator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataLayer/Serializator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/DeleteProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/DeleteProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/InterfaceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/InterfaceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/addProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/addProduct.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/BaseProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/BaseProduct.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/CompositeProduct.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/CompositeProduct.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/DeliveryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/DeliveryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/MenuItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataLayer/FileWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataLayer/Serializator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataLayer/Serializator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/IDeliveryServiceProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/IDeliveryServiceProcessing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/AddProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/AddProductController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/DeleteProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/DeleteProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/InterfaceLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/InterfaceLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/LogIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/LogIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/SignUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/SignUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/users.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

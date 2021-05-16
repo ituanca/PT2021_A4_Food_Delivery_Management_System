@@ -1,6 +1,7 @@
 package presentationLayer;
 
 import businessLayer.BaseProduct;
+import businessLayer.DeliveryService;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -41,17 +42,16 @@ public class DeleteProductController implements Initializable {
 
     public void deleteProduct(ActionEvent actionEvent) throws IOException {
         if(validate()){
-            List<BaseProduct> menuBaseProducts;
-            menuBaseProducts = getProducts();
-            menuBaseProducts.removeIf(product -> product.toString().equals(getSelectedProduct().toString()));
-            new Serializator().serializeMenuBaseProducts(menuBaseProducts);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Product was deleted successfully");
-            alert.show();
-            URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
-            Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-            AdministratorController.create(nextWindow, scene);
+            new DeliveryService().deleteProduct(getSelectedProduct());
+            showConfirmation();
+            goToAdministratorOptionsWindow();
         }
+    }
+
+    private void showConfirmation(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Product was deleted successfully");
+        alert.show();
     }
 
     @Override
@@ -59,15 +59,20 @@ public class DeleteProductController implements Initializable {
         cbProduct.getItems().addAll(getProducts());
     }
 
+    private List<BaseProduct> getProducts(){
+        return new Serializator().deserializeMenuBaseProducts();
+    }
+
     public void goBack(ActionEvent actionEvent) throws IOException {
+       goToAdministratorOptionsWindow();
+    }
+
+    private void goToAdministratorOptionsWindow() throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
         AdministratorController.create(nextWindow, scene);
     }
 
-    private List<BaseProduct> getProducts(){
-        return new Serializator().deserializeMenuBaseProducts();
-    }
-
     private BaseProduct getSelectedProduct() { return (BaseProduct) cbProduct.getValue(); }
+
 }
