@@ -84,13 +84,9 @@ public class SignUp implements Initializable, Window {
             alert.setContentText("User created successfully");
             alert.show();
             if (getUserType().equals("administrator")) {
-                URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
-                Scene scene = new Scene(FXMLLoader.load(url), 500, 500);
-                AdministratorController.create(nextWindow, scene);
+                Start.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
-                URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\client.fxml").toURI().toURL();
-                Scene scene = new Scene(FXMLLoader.load(url), 500, 500);
-                ClientController.create(nextWindow, scene);
+                Start.openNextWindow("client", new ClientController());
             }
         }
     }
@@ -103,7 +99,7 @@ public class SignUp implements Initializable, Window {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
         Start.create(nextWindow, scene);
     }
 

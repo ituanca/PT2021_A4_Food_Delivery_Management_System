@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.Start">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.Start">
    <children>
-      <Button id="btnLogIn" fx:id="btnLogIn" layoutX="209.0" layoutY="284.0" mnemonicParsing="false" onAction="#logIn" text="Log in">
+      <Button id="btnLogIn" fx:id="btnLogIn" layoutX="360.0" layoutY="289.0" mnemonicParsing="false" onAction="#logIn" text="Log in">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnSignUp" fx:id="btnSignUp" layoutX="204.0" layoutY="211.0" mnemonicParsing="false" onAction="#signUp" text="Sign up">
+      <Button id="btnSignUp" fx:id="btnSignUp" layoutX="355.0" layoutY="216.0" mnemonicParsing="false" onAction="#signUp" text="Sign up">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Label layoutX="151.0" layoutY="130.0" text="Food delivery">
+      <Label layoutX="302.0" layoutY="135.0" text="Food delivery">
          <font>
             <Font name="Bodoni MT" size="34.0" />
          </font>

@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class AdministratorController {
+public class AdministratorController implements Window{
     private static Stage nextWindow;
     public Button btnImport;
     public Button btnAdd;
@@ -23,7 +23,8 @@ public class AdministratorController {
     public Button btnGoBack;
     DeliveryService deliveryService = new DeliveryService();
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
         nextWindow = window;
@@ -58,7 +59,7 @@ public class AdministratorController {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
         Start.create(nextWindow, scene);
     }
 

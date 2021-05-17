@@ -71,17 +71,13 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     @Override
     public void deleteProduct(BaseProduct productToDelete) {
         menuBaseProducts = readBaseProducts();
-        menuCompositeProducts = readCompositeProducts();
         menuBaseProducts.removeIf(product -> product.toString().equals(productToDelete.toString()));
-        menu.removeIf(product -> product.toString().equals(productToDelete.toString()));
         writeBaseProducts();
-        writeCompositeProducts();
     }
 
     @Override
     public void modifyProduct(BaseProduct selectedProduct, String title, double rating, int calories, int protein, int fat, int sodium, int price) {
         menuBaseProducts = readBaseProducts();
-        menuCompositeProducts = readCompositeProducts();
         for(BaseProduct product: menuBaseProducts){
             if(product.toString().equals(selectedProduct.toString())){
                 product.setTitle(title);
@@ -95,7 +91,6 @@ public class DeliveryService implements IDeliveryServiceProcessing{
             }
         }
         writeBaseProducts();
-        writeCompositeProducts();
     }
 
     @Override
@@ -105,7 +100,6 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         menuCompositeProducts = readCompositeProducts();
         addToList(menuCompositeProducts, Stream.of(compositeProduct));
         writeCompositeProducts();
-        printCompositeProducts();
     }
 
     private Integer computeMenuNumber(){
@@ -123,7 +117,12 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public void viewMenu() {
+    public void viewProducts() {
+
+    }
+
+    @Override
+    public void viewMenus() {
 
     }
 
@@ -137,13 +136,13 @@ public class DeliveryService implements IDeliveryServiceProcessing{
 
     }
 
-    private List<BaseProduct> readBaseProducts(){
+    public List<BaseProduct> readBaseProducts(){
         return new Serializator().deserializeMenuBaseProducts();
     }
 
     private void writeBaseProducts(){ new Serializator().serializeMenuBaseProducts(menuBaseProducts); }
 
-    private List<CompositeProduct> readCompositeProducts(){
+    public List<CompositeProduct> readCompositeProducts(){
         return new Serializator().deserializeCompositeProducts();
     }
 
