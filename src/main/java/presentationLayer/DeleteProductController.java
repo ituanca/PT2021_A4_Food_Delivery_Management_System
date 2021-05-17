@@ -4,7 +4,6 @@ import businessLayer.BaseProduct;
 import businessLayer.DeliveryService;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,27 +11,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DeleteProductController implements Initializable {
-    private static Stage nextWindow;
+public class DeleteProductController implements Initializable, Window {
     public ComboBox cbProduct;
     public Button btnDeleteProduct;
     public Button btnGoBack;
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
-        nextWindow = window;
     }
 
-    private boolean validate(){
+    private boolean validate() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        if(cbProduct.getSelectionModel().isEmpty()){
+        if (cbProduct.getSelectionModel().isEmpty()) {
             alert.setContentText("Please select a product to delete");
             alert.show();
             return false;
@@ -41,14 +38,14 @@ public class DeleteProductController implements Initializable {
     }
 
     public void deleteProduct(ActionEvent actionEvent) throws IOException {
-        if(validate()){
+        if (validate()) {
             new DeliveryService().deleteProduct(getSelectedProduct());
             showConfirmation();
             goToAdministratorOptionsWindow();
         }
     }
 
-    private void showConfirmation(){
+    private void showConfirmation() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Product was deleted successfully");
         alert.show();
@@ -56,22 +53,14 @@ public class DeleteProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cbProduct.getItems().addAll(getProducts());
+        cbProduct.getItems().addAll(readProducts());
     }
 
-    private List<BaseProduct> getProducts(){
-        return new Serializator().deserializeMenuBaseProducts();
-    }
+    private List<BaseProduct> readProducts() { return new Serializator().deserializeMenuBaseProducts(); }
 
-    public void goBack(ActionEvent actionEvent) throws IOException {
-       goToAdministratorOptionsWindow();
-    }
+    public void goBack(ActionEvent actionEvent) throws IOException { goToAdministratorOptionsWindow(); }
 
-    private void goToAdministratorOptionsWindow() throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        AdministratorController.create(nextWindow, scene);
-    }
+    private void goToAdministratorOptionsWindow() throws IOException { Start.openNextWindow("administrator", new AddProductController()); }
 
     private BaseProduct getSelectedProduct() { return (BaseProduct) cbProduct.getValue(); }
 

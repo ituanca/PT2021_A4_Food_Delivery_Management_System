@@ -14,7 +14,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignUp implements Initializable {
+public class SignUp implements Initializable, Window {
     private static Stage nextWindow;
     public Button btnSignUp;
     public ComboBox cbUserType;
@@ -22,7 +22,8 @@ public class SignUp implements Initializable {
     public PasswordField pfPassword;
     public Button btnGoBack;
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
         nextWindow = window;
@@ -105,4 +106,5 @@ public class SignUp implements Initializable {
         Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
         Start.create(nextWindow, scene);
     }
+
 }

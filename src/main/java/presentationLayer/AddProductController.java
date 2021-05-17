@@ -2,19 +2,15 @@ package presentationLayer;
 
 import businessLayer.DeliveryService;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
-public class AddProductController {
-    private static Stage nextWindow;
+public class AddProductController implements Window{
     public TextField tfTitle;
     public TextField tfRating;
     public TextField tfCalories;
@@ -25,10 +21,10 @@ public class AddProductController {
     public Button btnAddProduct;
     public Button btnGoBack;
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
-        nextWindow = window;
     }
 
     private boolean validate(){
@@ -47,10 +43,11 @@ public class AddProductController {
         return true;
     }
 
-    public void addProduct(ActionEvent actionEvent) {
+    public void addProduct(ActionEvent actionEvent) throws IOException {
         if(validate()){
             new DeliveryService().addProduct(getTitle(), getRating(), getCalories(), getProtein(), getFat(), getSodium(), getPrice());
             showConfirmation();
+            goToAdministratorOptionsWindow();
         }
     }
 
@@ -110,9 +107,8 @@ public class AddProductController {
         }
     }
 
-    public void goBack(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        AdministratorController.create(nextWindow, scene);
-    }
+    public void goBack(ActionEvent actionEvent) throws IOException { goToAdministratorOptionsWindow(); }
+
+    private void goToAdministratorOptionsWindow() throws IOException { Start.openNextWindow("administrator", new AddProductController()); }
+
 }

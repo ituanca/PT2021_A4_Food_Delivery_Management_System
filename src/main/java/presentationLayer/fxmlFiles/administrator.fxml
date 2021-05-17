@@ -33,16 +33,17 @@
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
+      <Button id="btnCreate" fx:id="btnCreate" layoutX="30.0" layoutY="270.0" mnemonicParsing="false" onAction="#createNewProduct" text="Create new product">
+      <font>
+         <Font name="Bodoni MT" size="20.0" />
+      </font>
+      </Button>
       <Button id="btnGenerateReports" fx:id="btnGenerateReports" layoutX="29.0" layoutY="331.0" mnemonicParsing="false" onAction="#generateReports" text="Generate reports">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnCreate" fx:id="btnCreate" layoutX="30.0" layoutY="270.0" mnemonicParsing="false" onAction="#createNewProduct" text="Create new product">
-         <font>
-            <Font name="Bodoni MT" size="20.0" />
-         </font>
-      </Button>
+
       <Button id="btnGoBack" fx:id="btnGoBack" layoutX="367.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />

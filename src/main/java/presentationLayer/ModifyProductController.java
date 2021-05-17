@@ -1,22 +1,20 @@
 package presentationLayer;
 
 import businessLayer.BaseProduct;
+import businessLayer.DeliveryService;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ModifyProductController implements Initializable {
-    private static Stage nextWindow;
+public class ModifyProductController implements Initializable, Window {
     public ComboBox cbProduct;
     public TextField tfTitle;
     public TextField tfRating;
@@ -35,14 +33,40 @@ public class ModifyProductController implements Initializable {
     public Label lblSodium;
     public Label lblPrice;
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
-        nextWindow = window;
     }
 
-    public void modifyProduct(ActionEvent actionEvent) {
+    private boolean validate(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if(getTitle().isEmpty() || tfRating.getText().equals("") || tfCalories.getText().equals("") || tfProtein.getText().equals("") || tfFat.getText().equals("") ||
+                tfSodium.getText().equals("") || tfPrice.getText().equals("")){
+            alert.setContentText("Please fill in all the fields");
+            alert.show();
+            return false;
+        }
+        if(getRating() == -1 || getCalories() == -1 || getProtein() == -1 || getFat() == -1 || getSodium() == -1 || getPrice() == -1){
+            alert.setContentText("Invalid data");
+            alert.show();
+            return false;
+        }
+        return true;
+    }
 
+    public void modifyProduct(ActionEvent actionEvent) throws IOException {
+        if(validate()){
+            new DeliveryService().modifyProduct(getSelectedProduct(), getTitle(), getRating(), getCalories(), getProtein(), getFat(), getSodium(), getPrice());
+            showConfirmation();
+            goToAdministratorOptionsWindow();
+        }
+    }
+
+    private void showConfirmation() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Product was modified successfully");
+        alert.show();
     }
 
     @Override
@@ -52,45 +76,79 @@ public class ModifyProductController implements Initializable {
 
     public void selectProduct(ActionEvent actionEvent) {
         BaseProduct product = getSelectedProduct();
-        lblTitle.setVisible(true);
-        tfTitle.setVisible(true);
-        tfTitle.setText(product.title);
-        lblRating.setVisible(true);
-        tfRating.setVisible(true);
-        tfRating.setText(String.valueOf(product.rating));
-        lblCalories.setVisible(true);
-        tfCalories.setVisible(true);
-        tfCalories.setText(String.valueOf(product.calories));
-        lblProtein.setVisible(true);
-        tfProtein.setVisible(true);
-        tfProtein.setText(String.valueOf(product.protein));
-        lblFat.setVisible(true);
-        tfFat.setVisible(true);
-        tfFat.setText(String.valueOf(product.fat));
-        lblSodium.setVisible(true);
-        tfSodium.setVisible(true);
-        tfSodium.setText(String.valueOf(product.sodium));
-        lblPrice.setVisible(true);
-        tfPrice.setVisible(true);
-        tfPrice.setText(String.valueOf(product.price));
+        setLabelAndTextField(lblTitle, tfTitle, product.title);
+        setLabelAndTextField(lblRating, tfRating, String.valueOf(product.rating));
+        setLabelAndTextField(lblCalories, tfCalories, String.valueOf(product.calories));
+        setLabelAndTextField(lblProtein,tfProtein,String.valueOf(product.protein));
+        setLabelAndTextField(lblFat,tfFat,String.valueOf(product.fat));
+        setLabelAndTextField(lblSodium, tfSodium, String.valueOf(product.sodium));
+        setLabelAndTextField(lblPrice, tfPrice, String.valueOf(product.price));
         btnModifyProduct.setVisible(true);
+    }
+
+    private void setLabelAndTextField(Label lbl, TextField tf, String string){
+        lbl.setVisible(true);
+        tf.setVisible(true);
+        tf.setText(string);
     }
 
     private List<BaseProduct> getProducts(){
         return new Serializator().deserializeMenuBaseProducts();
     }
 
-    public void goBack(ActionEvent actionEvent) throws IOException {
-        goToAdministratorOptionsWindow();
-    }
+    public void goBack(ActionEvent actionEvent) throws IOException { goToAdministratorOptionsWindow(); }
 
-    private void goToAdministratorOptionsWindow() throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\administrator.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        AdministratorController.create(nextWindow, scene);
-    }
+    private void goToAdministratorOptionsWindow() throws IOException { Start.openNextWindow("administrator", new AddProductController()); }
 
     private BaseProduct getSelectedProduct() { return (BaseProduct) cbProduct.getValue(); }
 
+    private String getTitle() { return tfTitle.getText(); }
 
+    private Double getRating() {
+        try{
+            return Double.parseDouble(tfRating.getText());
+        }catch(NumberFormatException nfe){
+            return (double) -1;
+        }
+    }
+
+    private Integer getCalories() {
+        try{
+            return Integer.parseInt(tfCalories.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getProtein() {
+        try{
+            return Integer.parseInt(tfProtein.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getFat() {
+        try{
+            return Integer.parseInt(tfFat.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getSodium() {
+        try{
+            return Integer.parseInt(tfSodium.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getPrice() {
+        try{
+            return Integer.parseInt(tfPrice.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
 }

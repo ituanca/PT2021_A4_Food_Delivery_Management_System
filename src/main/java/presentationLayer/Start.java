@@ -22,14 +22,16 @@ public class Start {
     }
 
     public void logIn(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\logIn.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        LogIn.create(nextWindow, scene);
+       openNextWindow("logIn", new LogIn());
     }
 
     public void signUp(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\signUp.fxml").toURI().toURL();
+       openNextWindow("signUp", new SignUp());
+    }
+
+    public static void openNextWindow(String fileName, Window window) throws IOException {
+        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\" + fileName + ".fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        SignUp.create(nextWindow, scene);
+        window.create(nextWindow, scene);
     }
 }

@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 public class CompositeProduct extends MenuItem {
 
-    ArrayList<MenuItem> compositeProduct = new ArrayList<MenuItem>();
+    public ArrayList<MenuItem> listOfMenuItems;
 
-    public CompositeProduct(String title, int price) {
+    public CompositeProduct(String title, int price, ArrayList<MenuItem> listOfMenuItems) {
         super(title, price);
+        this.listOfMenuItems = listOfMenuItems;
     }
 
     @Override
     public int computePrice() {
         int price = 0;
-        for (MenuItem menuItem : compositeProduct) {
+        for (MenuItem menuItem : listOfMenuItems) {
             price += menuItem.getPrice();
         }
         return price;

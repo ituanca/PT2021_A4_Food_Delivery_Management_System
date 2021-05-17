@@ -37,27 +37,19 @@ public class AdministratorController {
     }
 
     public void addProduct(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\addProduct.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        AddProductController.create(nextWindow, scene);
+        Start.openNextWindow("addProduct", new AddProductController());
     }
 
     public void deleteProduct(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\deleteProduct.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        DeleteProductController.create(nextWindow, scene);
+        Start.openNextWindow("deleteProduct", new DeleteProductController());
     }
 
     public void modifyProduct(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\modifyProduct.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        AdministratorController.create(nextWindow, scene);
+        Start.openNextWindow("modifyProduct", new ModifyProductController());
     }
 
     public void createNewProduct(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\createNewProduct.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 500, 500);
-        CreateNewProductController.create(nextWindow, scene);
+        Start.openNextWindow("createNewProduct", new CreateNewProductController());
     }
 
     public void generateReports(ActionEvent actionEvent) {

@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65391103-a3a9-47c9-b3c6-c1a33c5c52d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dataLayer/Serializator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataLayer/Serializator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/CreateNewProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/CreateNewProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/DeleteProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/DeleteProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/DeliveryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/DeliveryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/businessLayer/IDeliveryServiceProcessing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/businessLayer/IDeliveryServiceProcessing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/AddProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/AddProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/presentationLayer/DeleteProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/presentationLayer/DeleteProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/createNewProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/createNewProduct.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +30,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="package-info" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -54,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pt2021_30422_itu_anca_assignment_3" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -107,6 +110,11 @@
           <properties class="java.lang.ClassNotFoundException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

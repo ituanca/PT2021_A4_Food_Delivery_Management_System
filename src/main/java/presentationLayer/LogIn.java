@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class LogIn implements Initializable {
+public class LogIn implements Initializable, Window {
     private static Stage nextWindow;
     public ComboBox cbUserType;
     public TextField tfUsername;
@@ -22,7 +22,8 @@ public class LogIn implements Initializable {
     public Button btnLogIn;
     public Button btnGoBack;
 
-    public static void create(Stage window, Scene scene){
+    @Override
+    public void create(Stage window, Scene scene) {
         window.setScene(scene);
         window.show();
         nextWindow = window;
@@ -123,4 +124,5 @@ public class LogIn implements Initializable {
     private String getPassword() { return pfPassword.getText(); }
 
     private String getUserType() { return (String) cbUserType.getValue(); }
+
 }
