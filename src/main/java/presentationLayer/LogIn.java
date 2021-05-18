@@ -30,42 +30,7 @@ public class LogIn implements Initializable, Window {
     }
 
     private boolean checkUserExistence(){
-        try {
-            FileReader file = new FileReader("src\\main\\resources\\users.txt");
-            BufferedReader br = new BufferedReader(file);
-            int line = 1;
-            boolean foundUsername = false, correctPassword = false, correctUserType = false;
-            String data = br.readLine();
-            while (data != null) {
-                if (line % 3 == 1 && getUsername().equals(data)) {
-                    foundUsername = true;
-                } else {
-                    if(line % 3 == 2 && foundUsername){
-                        if (getPassword().equals(data)) {
-                            correctPassword = true;
-                        }
-                    }else{
-                        if(foundUsername && correctPassword && getUserType().equals(data)){
-                            correctUserType = true;
-                        }
-                    }
-                }
-                if (foundUsername && correctPassword && correctUserType) {
-                    return true;
-                }
-                line++;
-                data = br.readLine();
-            }
-            return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    private boolean checkUserExistenceSerialization(){
-        Serializator serializer = new Serializator();
-        ArrayList<User> users  = serializer.deserializeUsers();
+        ArrayList<User> users  = readUsers();
         for(User user: users){
             if(getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && getUserType().equals(user.getUserType())){
                 return true;
@@ -86,7 +51,7 @@ public class LogIn implements Initializable, Window {
             alert.show();
             return false;
         }
-        if(!checkUserExistenceSerialization()){
+        if(!checkUserExistence()){
             alert.setContentText("User not found");
             alert.show();
             return false;
@@ -111,7 +76,7 @@ public class LogIn implements Initializable, Window {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
         Start.create(nextWindow, scene);
     }
 
@@ -120,5 +85,7 @@ public class LogIn implements Initializable, Window {
     private String getPassword() { return pfPassword.getText(); }
 
     private String getUserType() { return (String) cbUserType.getValue(); }
+
+    public ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }
 
 }

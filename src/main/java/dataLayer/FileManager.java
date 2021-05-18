@@ -12,6 +12,8 @@ public class FileManager {
 
     public void writeNewUser(User user) throws IOException{
         try (BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("src\\main\\resources\\users.txt", true))) {
+            bw.write(user.getId());
+            bw.newLine();
             bw.write(user.getUsername());
             bw.newLine();
             bw.write(user.getPassword());
@@ -30,17 +32,22 @@ public class FileManager {
             BufferedReader br = new BufferedReader(fileReader);
             String data = br.readLine();
             int line = 1;
-            String username = null, password = null, userType;
+            int id = 1;
+            String  username = null, password = null, userType;
             while (data != null) {
-                if (line % 3 == 1) {
-                    username = data;
+                if (line % 4 == 1) {
+                    id = Integer.parseInt(data);
                 } else {
-                    if (line % 3 == 2) {
-                        password = data;
+                    if (line % 4 == 2) {
+                        username = data;
                     } else {
-                        userType = data;
-                        User user = new User(username, password, userType);
-                        users.add(user);
+                        if(line%4 == 3){
+                            password = data;
+                        }else{
+                            userType = data;
+                            User user = new User(id, username, password, userType);
+                            users.add(user);
+                        }
                     }
                 }
                 line++;

@@ -31,7 +31,7 @@ public class Start{
 
     public static void openNextWindow(String fileName, Window window) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\" + fileName + ".fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
         window.create(nextWindow, scene);
     }
 

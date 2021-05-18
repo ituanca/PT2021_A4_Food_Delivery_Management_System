@@ -105,7 +105,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     private Integer computeMenuNumber(){
         int menuNo = 1;
         menuCompositeProducts = readCompositeProducts();
-        for(CompositeProduct compositeProduct: menuCompositeProducts){
+        for(CompositeProduct ignored : menuCompositeProducts){
             menuNo++;
         }
         return menuNo;
@@ -154,6 +154,51 @@ public class DeliveryService implements IDeliveryServiceProcessing{
             }
         }
         return resultedArrayList;
+    }
+
+    @Override
+    public ArrayList<String> searchForMenu(String itemTitle, int price) {
+        menuCompositeProducts = readCompositeProducts();
+        return getListOfCompositeProducts(
+                menuCompositeProducts,
+                (CompositeProduct product) -> {
+                    for(MenuItem menuItem : product.listOfMenuItems) {
+                        if (menuItem.title.contains(itemTitle) && (price == -1 || product.price == price)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+    }
+
+    public ArrayList<String> getListOfCompositeProducts(List<CompositeProduct> roster, SearchingForCompositeProduct tester) {
+        ArrayList<String> resultedArrayList = new ArrayList<>();
+        for (CompositeProduct p : roster) {
+            if (tester.test(p)) {
+                resultedArrayList.add(p.toString());
+            }
+        }
+        return resultedArrayList;
+    }
+
+    public List<MenuItem> createMenu(){
+        menuBaseProducts = readBaseProducts();
+        menuCompositeProducts = readCompositeProducts();
+        menu.addAll(menuBaseProducts);
+        menu.addAll(menuCompositeProducts);
+        return menu;
+    }
+
+    public List<MenuItem> createClientOrder(String stringMenuItem){
+        List<MenuItem> clientOrder = new ArrayList<>();
+        createMenu();
+        for(MenuItem menuItem : menu){
+            if(menuItem.toString().equals(stringMenuItem)){
+                clientOrder.add(menuItem);
+                break;
+            }
+        }
+        return clientOrder;
     }
 
     @Override

@@ -45,6 +45,20 @@ public class ClientController implements Window, Initializable {
     public Button btnSearch;
     public ScrollPane scrollPaneSearchForProduct;
     public ListView listViewSearchForProduct;
+    public AnchorPane anchorPaneSearchForMenu;
+    public TextField tfTitleMenuItem;
+    public TextField tfPriceMenu;
+    public Button btnSearchForMenu;
+    public ScrollPane scrollPaneSearchForMenu;
+    public ListView listViewSearchForMenu;
+    public Button btnSearchMenu;
+    public AnchorPane anchorPaneCreateOrder;
+    public ScrollPane scrollPaneProductsForOrder;
+    public ListView listViewProductsForOrder;
+    public ScrollPane scrollPaneFinalOrder;
+    public ListView listViewFinalOrder;
+    public TextField tfOrderPrice;
+    public Button btnFinalizeOrder;
 
     DeliveryService deliveryService = new DeliveryService();
 
@@ -65,12 +79,16 @@ public class ClientController implements Window, Initializable {
         scrollPaneProducts.setVisible(true);
         scrollPaneMenus.setVisible(false);
         anchorPaneSearchForProduct.setVisible(false);
+        anchorPaneSearchForMenu.setVisible(false);
+        anchorPaneCreateOrder.setVisible(false);
     }
 
     public void viewMenus(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
         scrollPaneMenus.setVisible(true);
         anchorPaneSearchForProduct.setVisible(false);
+        anchorPaneSearchForMenu.setVisible(false);
+        anchorPaneCreateOrder.setVisible(false);
     }
 
     private boolean validate(){
@@ -86,11 +104,11 @@ public class ClientController implements Window, Initializable {
 
     public void searchForProduct(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
-        listViewProducts.setVisible(false);
         scrollPaneMenus.setVisible(false);
-        listViewMenus.setVisible(false);
         anchorPaneSearchForProduct.setVisible(true);
         scrollPaneSearchForProduct.setVisible(false);
+        anchorPaneSearchForMenu.setVisible(false);
+        anchorPaneCreateOrder.setVisible(false);
     }
 
     public void search(ActionEvent actionEvent) {
@@ -101,14 +119,47 @@ public class ClientController implements Window, Initializable {
         }
     }
 
-    public void createOrder(ActionEvent actionEvent) {
-
+    private boolean validateMenu(){
+        if(!tfPriceMenu.getText().equals("") && getPriceMenu() == -1){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid data");
+            alert.show();
+            return false;
+        }
+        return true;
     }
 
-    public void goBack(ActionEvent actionEvent) throws IOException {
-        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
-        Start.create(nextWindow, scene);
+    public void searchForMenu(ActionEvent actionEvent) {
+        scrollPaneProducts.setVisible(false);
+        scrollPaneMenus.setVisible(false);
+        anchorPaneSearchForProduct.setVisible(false);
+        anchorPaneSearchForMenu.setVisible(true);
+        anchorPaneCreateOrder.setVisible(false);
+    }
+
+    public void searchMenu(ActionEvent actionEvent) {
+        if (validateMenu()) {
+            listViewSearchForMenu.getItems().clear();
+            scrollPaneSearchForMenu.setVisible(true);
+            listViewSearchForMenu.getItems().addAll(deliveryService.searchForMenu(getTitleMenuItem(), getPriceMenu()));
+        }
+    }
+
+    public void createOrder(ActionEvent actionEvent) {
+        scrollPaneProducts.setVisible(false);
+        scrollPaneMenus.setVisible(false);
+        anchorPaneSearchForProduct.setVisible(false);
+        anchorPaneSearchForMenu.setVisible(false);
+        anchorPaneCreateOrder.setVisible(true);
+        listViewProductsForOrder.getItems().addAll(deliveryService.createMenu());
+    }
+
+    // nu se selecteaza
+    public void selectProductForOrder(ListView.EditEvent editEvent) {
+        listViewFinalOrder.getItems().addAll(deliveryService.createClientOrder(listViewProductsForOrder.getSelectionModel().getSelectedItem().toString()));
+    }
+
+    public void finalizeOrder(ActionEvent actionEvent) {
     }
 
     private String getTitle() { return tfTitle.getText(); }
@@ -160,5 +211,22 @@ public class ClientController implements Window, Initializable {
             return -1;
         }
     }
+
+    private String getTitleMenuItem() { return tfTitleMenuItem.getText(); }
+
+    private Integer getPriceMenu() {
+        try{
+            return Integer.parseInt(tfPriceMenu.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    public void goBack(ActionEvent actionEvent) throws IOException {
+        URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
+        Start.create(nextWindow, scene);
+    }
+
 
 }

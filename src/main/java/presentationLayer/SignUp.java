@@ -1,7 +1,6 @@
 package presentationLayer;
 
 import businessLayer.User;
-import dataLayer.FileManager;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +11,11 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SignUp implements Initializable, Window {
     private static Stage nextWindow;
@@ -30,22 +33,11 @@ public class SignUp implements Initializable, Window {
     }
 
     public boolean checkUsernameExistence(){
-        try {
-            FileReader file = new FileReader("src\\main\\resources\\users.txt");
-            BufferedReader br = new BufferedReader(file);
-            int line = 1;
-            String data = br.readLine();
-            while (data != null) {
-                if(line % 3 == 1){
-                    if(data.equals(getUsername())){
-                        return true;
-                    }
-                }
-                line++;
-                data = br.readLine();
+        ArrayList<User> usersList = readUsers();
+        for(User user : usersList){
+            if(user.getUsername().equals(getUsername())){
+                return true;
             }
-        } catch (IOException e) {
-            return false;
         }
         return false;
     }
@@ -77,9 +69,10 @@ public class SignUp implements Initializable, Window {
 
     public void signUp(ActionEvent actionEvent) throws IOException {
         if(validate()){
-            User user = new User(getUsername(), getPassword(), getUserType());
-            new FileManager().writeNewUser(user);
-            new Serializator().serializeUsers(new FileManager().readUsersFromFile());
+            ArrayList<User> usersList = readUsers();
+            User user = new User(computeUserID(usersList), getUsername(), getPassword(), getUserType());
+            addToList(usersList, Stream.of(user));
+            writeUsers(usersList);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText("User created successfully");
             alert.show();
@@ -88,7 +81,20 @@ public class SignUp implements Initializable, Window {
             } else if (getUserType().equals("client")) {
                 Start.openNextWindow("client", new ClientController());
             }
+            System.out.println(user.getId());
         }
+    }
+
+    private Integer computeUserID(ArrayList<User> usersList){
+        int userID = 1;
+        for(User ignored : usersList){
+            userID++;
+        }
+        return userID;
+    }
+
+    public static<T> void addToList(List<T> target, Stream<T> source) {
+        source.collect(Collectors.toCollection(() -> target));
     }
 
     private String getUsername() { return tfUsername.getText(); }
@@ -102,5 +108,9 @@ public class SignUp implements Initializable, Window {
         Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
         Start.create(nextWindow, scene);
     }
+
+     public ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }
+
+     private void writeUsers(ArrayList<User> usersList){ new Serializator().serializeUsers(usersList); }
 
 }

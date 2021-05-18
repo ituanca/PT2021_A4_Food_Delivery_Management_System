@@ -59,7 +59,7 @@ public class AdministratorController implements Window{
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
         Start.create(nextWindow, scene);
     }
 

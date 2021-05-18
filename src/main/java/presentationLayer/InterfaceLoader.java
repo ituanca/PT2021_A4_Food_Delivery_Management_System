@@ -20,10 +20,8 @@ public class InterfaceLoader extends Application {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         stage.setTitle("Food delivery management system");
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 800, 640);
         window = stage;
-        Serializator serializer = new Serializator();
-        serializer.serializeUsers(new FileManager().readUsersFromFile());
         Start.create(window, scene);
     }
 }

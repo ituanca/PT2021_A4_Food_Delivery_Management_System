@@ -8,49 +8,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.ClientController">
+<AnchorPane prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.ClientController">
    <children>
       <Label layoutX="368.0" layoutY="55.0" text="Client">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <Button id="btnViewProducts" fx:id="btnViewProducts" layoutX="42.0" layoutY="102.0" mnemonicParsing="false" onAction="#viewProducts" text="View products">
+      <Button id="btnViewProducts" fx:id="btnViewProducts" layoutX="42.0" layoutY="94.0" mnemonicParsing="false" onAction="#viewProducts" text="View products">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnViewMenus" fx:id="btnViewMenus" layoutX="246.0" layoutY="102.0" mnemonicParsing="false" onAction="#viewMenus" text="View menus">
+      <Button id="btnViewMenus" fx:id="btnViewMenus" layoutX="185.0" layoutY="94.0" mnemonicParsing="false" onAction="#viewMenus" text="View menus">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnSearchForProduct" fx:id="btnSearchForProduct" layoutX="423.0" layoutY="102.0" mnemonicParsing="false" onAction="#searchForProduct" text="Search for product">
+      <Button id="btnSearchForProduct" fx:id="btnSearchForProduct" layoutX="312.0" layoutY="94.0" mnemonicParsing="false" onAction="#searchForProduct" text="Search for product">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnCreateOrder" fx:id="btnCreateOrder" layoutX="644.0" layoutY="102.0" mnemonicParsing="false" onAction="#createOrder" text="Create order">
+      <Button id="btnCreateOrder" fx:id="btnCreateOrder" layoutX="644.0" layoutY="94.0" mnemonicParsing="false" onAction="#createOrder" text="Create order">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="689.0" layoutY="447.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="666.0" layoutY="568.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <ScrollPane id="scrollPaneProducts" fx:id="scrollPaneProducts" layoutX="42.0" layoutY="150.0" prefHeight="281.0" prefWidth="719.0" visible="false">
+      <ScrollPane id="scrollPaneProducts" fx:id="scrollPaneProducts" layoutX="42.0" layoutY="150.0" prefHeight="393.0" prefWidth="719.0" visible="false">
          <content>
-            <ListView id="listViewProducts" fx:id="listViewProducts" prefHeight="270.0" prefWidth="707.0" />
+            <ListView id="listViewProducts" fx:id="listViewProducts" prefHeight="385.0" prefWidth="707.0" />
          </content>
       </ScrollPane>
-      <ScrollPane id="scrollPaneMenus" fx:id="scrollPaneMenus" layoutX="42.0" layoutY="150.0" prefHeight="287.0" prefWidth="719.0" visible="false">
+      <ScrollPane id="scrollPaneMenus" fx:id="scrollPaneMenus" layoutX="42.0" layoutY="150.0" prefHeight="400.0" prefWidth="719.0" visible="false">
          <content>
-            <ListView id="listViewMenus" fx:id="listViewMenus" prefHeight="279.0" prefWidth="704.0" />
+            <ListView id="listViewMenus" fx:id="listViewMenus" prefHeight="395.0" prefWidth="711.0" />
          </content>
       </ScrollPane>
-      <AnchorPane id="anchorPaneSearchForProduct" fx:id="anchorPaneSearchForProduct" layoutX="27.0" layoutY="144.0" prefHeight="293.0" prefWidth="746.0" visible="false">
+      <AnchorPane id="anchorPaneSearchForProduct" fx:id="anchorPaneSearchForProduct" layoutX="23.0" layoutY="143.0" prefHeight="407.0" prefWidth="754.0" visible="false">
          <children>
             <Label id="SearchBy" fx:id="lblSearchBy" layoutX="8.0" layoutY="32.0" text="Search by:">
                <font>
@@ -104,11 +104,82 @@
                   <Font name="Bodoni MT" size="18.0" />
                </font>
             </Button>
-            <ScrollPane id="scrollPaneSearchForProduct" fx:id="scrollPaneSearchForProduct" layoutY="111.0" prefHeight="182.0" prefWidth="754.0" visible="false">
+            <ScrollPane id="scrollPaneSearchForProduct" fx:id="scrollPaneSearchForProduct" layoutY="111.0" prefHeight="293.0" prefWidth="754.0" visible="false">
                <content>
-                  <ListView id="listViewSearchForProduct" fx:id="listViewSearchForProduct" prefHeight="179.0" prefWidth="737.0" />
+                  <ListView id="listViewSearchForProduct" fx:id="listViewSearchForProduct" prefHeight="292.0" prefWidth="747.0" />
                </content>
             </ScrollPane>
+         </children>
+      </AnchorPane>
+      <Button id="btnSearchForMenu" fx:id="btnSearchForMenu" layoutX="486.0" layoutY="94.0" mnemonicParsing="false" onAction="#searchForMenu" text="Search for menu">
+         <font>
+            <Font name="Bodoni MT" size="18.0" />
+         </font>
+      </Button>
+      <AnchorPane id="anchorPaneSearchForMenu" fx:id="anchorPaneSearchForMenu" layoutX="42.0" layoutY="150.0" prefHeight="400.0" prefWidth="719.0" visible="false">
+         <children>
+            <Label layoutX="20.0" layoutY="29.0" text="Search by:">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="168.0" layoutY="6.0" text="Product title">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="360.0" layoutY="6.0" text="Menu price">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <TextField id="tfTitle" fx:id="tfTitleMenuItem" layoutX="113.0" layoutY="28.0" prefHeight="25.0" prefWidth="217.0" />
+            <TextField id="tfPrice" fx:id="tfPriceMenu" layoutX="341.0" layoutY="28.0" prefHeight="25.0" prefWidth="123.0" />
+            <ScrollPane id="scrollPaneSearchForMenu" fx:id="scrollPaneSearchForMenu" layoutX="13.0" layoutY="66.0" prefHeight="326.0" prefWidth="695.0" visible="false">
+               <content>
+                  <ListView id="listViewSearchForMenu" fx:id="listViewSearchForMenu" prefHeight="323.0" prefWidth="690.0" />
+               </content>
+            </ScrollPane>
+            <Button id="btnSearchMenu" fx:id="btnSearchMenu" layoutX="521.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchMenu" text="Search">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="anchorPaneCreateOrder" fx:id="anchorPaneCreateOrder" layoutX="42.0" layoutY="134.0" prefHeight="434.0" prefWidth="719.0" visible="false">
+         <children>
+            <ScrollPane id="scrollPaneProductsForOrder" fx:id="scrollPaneProductsForOrder" layoutY="29.0" prefHeight="156.0" prefWidth="719.0">
+               <content>
+                  <ListView id="listViewProductsForOrder" fx:id="listViewProductsForOrder" onEditCommit="#selectProductForOrder" prefHeight="152.0" prefWidth="711.0" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="220.0" layoutY="5.0" text="Choose some products for your order:">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="316.0" layoutY="198.0" text="Your order:">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <ScrollPane id="scrollPaneFinalOrder" fx:id="scrollPaneFinalOrder" layoutY="222.0" prefHeight="156.0" prefWidth="719.0">
+               <content>
+                  <ListView id="listViewFinalOrder" fx:id="listViewFinalOrder" prefHeight="152.0" prefWidth="711.0" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="20.0" layoutY="393.0" text="Order price:">
+               <font>
+                  <Font name="Bodoni MT" size="20.0" />
+               </font>
+            </Label>
+            <TextField id="tfOrderPrice" fx:id="tfOrderPrice" editable="false" layoutX="129.0" layoutY="393.0" />
+            <Button id="btnFinalizeOrder" fx:id="btnFinalizeOrder" layoutX="302.0" layoutY="389.0" mnemonicParsing="false" onAction="#finalizeOrder" text="Create order">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
