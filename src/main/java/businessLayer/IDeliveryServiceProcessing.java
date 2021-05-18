@@ -1,5 +1,7 @@
 package businessLayer;
 
+import javafx.scene.control.ListView;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +13,8 @@ public interface IDeliveryServiceProcessing {
     void modifyProduct(BaseProduct selectedProduct, String title, double rating, int calories, int protein, int fat, int sodium, int price);
     void createCompositeProduct(ArrayList<MenuItem> listOfMenuItems);
     void generateReports();
-    void viewProducts();
-    void viewMenus();
-    void searchForProducts();
+    ArrayList<String> viewProducts();
+    ArrayList<String> viewMenus();
+    ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price);
     void createOrder();
 }

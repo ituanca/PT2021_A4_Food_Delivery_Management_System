@@ -1,27 +1,18 @@
 package presentationLayer;
 
-import businessLayer.BaseProduct;
-import businessLayer.CompositeProduct;
 import businessLayer.DeliveryService;
-import dataLayer.Serializator;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import businessLayer.SearchingForProduct;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ClientController implements Window, Initializable {
@@ -35,6 +26,25 @@ public class ClientController implements Window, Initializable {
     public ListView listViewProducts;
     public ScrollPane scrollPaneMenus;
     public ListView listViewMenus;
+    public AnchorPane anchorPaneSearchForProduct;
+    public Label lblSearchBy;
+    public Label lblTitle;
+    public Label lblRating;
+    public Label lblCalories;
+    public Label lblProtein;
+    public Label lblFat;
+    public Label lblSodium;
+    public Label lblPrice;
+    public TextField tfTitle;
+    public TextField tfRating;
+    public TextField tfCalories;
+    public TextField tfProtein;
+    public TextField tfFat;
+    public TextField tfSodium;
+    public TextField tfPrice;
+    public Button btnSearch;
+    public ScrollPane scrollPaneSearchForProduct;
+    public ListView listViewSearchForProduct;
 
     DeliveryService deliveryService = new DeliveryService();
 
@@ -47,50 +57,108 @@ public class ClientController implements Window, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeListViewProducts();
-        initializeListViewMenus();
-    }
-
-    private void initializeListViewProducts(){
-        ArrayList<String> stringProducts = new ArrayList<>();
-        for(BaseProduct baseProduct: deliveryService.readBaseProducts()){
-            stringProducts.add(baseProduct.toString());
-        }
-        listViewProducts.getItems().addAll(stringProducts);
-    }
-
-    private void initializeListViewMenus(){
-        ArrayList<String> stringMenus = new ArrayList<>();
-        for(CompositeProduct compositeProduct: deliveryService.readCompositeProducts()){
-            stringMenus.add(compositeProduct.toString());
-        }
-        listViewMenus.getItems().addAll(stringMenus);
+        listViewProducts.getItems().addAll(deliveryService.viewProducts());
+        listViewMenus.getItems().addAll(deliveryService.viewMenus());
     }
 
     public void viewProducts(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(true);
-        listViewProducts.setVisible(true);
         scrollPaneMenus.setVisible(false);
-        listViewMenus.setVisible(false);
+        anchorPaneSearchForProduct.setVisible(false);
     }
 
     public void viewMenus(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
-        listViewProducts.setVisible(false);
         scrollPaneMenus.setVisible(true);
-        listViewMenus.setVisible(true);
+        anchorPaneSearchForProduct.setVisible(false);
+    }
+
+    private boolean validate(){
+        if( (!tfRating.getText().equals("") && getRating() == -1) || (!tfCalories.getText().equals("") && getCalories() == -1) || (!tfProtein.getText().equals("") && getProtein() == -1) ||
+                (!tfFat.getText().equals("") && getFat() == -1) || (!tfSodium.getText().equals("") && getSodium() == -1) || (!tfPrice.getText().equals("") && getPrice() == -1)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Invalid data");
+            alert.show();
+            return false;
+        }
+        return true;
     }
 
     public void searchForProduct(ActionEvent actionEvent) {
+        scrollPaneProducts.setVisible(false);
+        listViewProducts.setVisible(false);
+        scrollPaneMenus.setVisible(false);
+        listViewMenus.setVisible(false);
+        anchorPaneSearchForProduct.setVisible(true);
+        scrollPaneSearchForProduct.setVisible(false);
+    }
+
+    public void search(ActionEvent actionEvent) {
+        if (validate()) {
+            listViewSearchForProduct.getItems().clear();
+            scrollPaneSearchForProduct.setVisible(true);
+            listViewSearchForProduct.getItems().addAll(deliveryService.searchForProduct(getTitle(), getRating(), getCalories(), getProtein(), getFat(), getSodium(), getPrice()));
+        }
     }
 
     public void createOrder(ActionEvent actionEvent) {
+
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
         Start.create(nextWindow, scene);
+    }
+
+    private String getTitle() { return tfTitle.getText(); }
+
+    private Double getRating() {
+        try{
+            return Double.parseDouble(tfRating.getText());
+        }catch(NumberFormatException nfe){
+            return (double) -1;
+        }
+    }
+
+    private Integer getCalories() {
+        try{
+            return Integer.parseInt(tfCalories.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getProtein() {
+        try{
+            return Integer.parseInt(tfProtein.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getFat() {
+        try{
+            return Integer.parseInt(tfFat.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getSodium() {
+        try{
+            return Integer.parseInt(tfSodium.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
+    }
+
+    private Integer getPrice() {
+        try{
+            return Integer.parseInt(tfPrice.getText());
+        }catch(NumberFormatException nfe){
+            return -1;
+        }
     }
 
 }

@@ -117,18 +117,43 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public void viewProducts() {
-
+    public ArrayList<String> viewProducts() {
+        ArrayList<String> stringProducts = new ArrayList<>();
+        for(BaseProduct baseProduct: readBaseProducts()){
+            stringProducts.add(baseProduct.toString());
+        }
+        return stringProducts;
     }
 
     @Override
-    public void viewMenus() {
-
+    public ArrayList<String> viewMenus() {
+        ArrayList<String> stringMenus = new ArrayList<>();
+        for(CompositeProduct compositeProduct: readCompositeProducts()){
+            stringMenus.add(compositeProduct.toString());
+        }
+        return stringMenus;
     }
 
     @Override
-    public void searchForProducts() {
+    public ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
+        menuBaseProducts = readBaseProducts();
+        return getListOfProducts(
+                menuBaseProducts,
+                (BaseProduct product) ->
+                        (product.title.contains(title)) && ((product.rating == rating || rating == -1) && (calories == -1 || product.calories == calories) &&
+                                (product.protein == protein || protein == -1) && (product.fat == fat || fat == -1) && (product.sodium == sodium || sodium == -1) &&
+                                (product.price == price || price == -1))
+                       );
+    }
 
+    public ArrayList<String> getListOfProducts(List<BaseProduct> roster, SearchingForProduct tester) {
+        ArrayList<String> resultedArrayList = new ArrayList<>();
+        for (BaseProduct p : roster) {
+            if (tester.test(p)) {
+                resultedArrayList.add(p.toString());
+            }
+        }
+        return resultedArrayList;
     }
 
     @Override

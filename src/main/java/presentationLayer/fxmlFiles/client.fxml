@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -41,13 +42,74 @@
       </Button>
       <ScrollPane id="scrollPaneProducts" fx:id="scrollPaneProducts" layoutX="42.0" layoutY="150.0" prefHeight="281.0" prefWidth="719.0" visible="false">
          <content>
-            <ListView id="listViewProducts" fx:id="listViewProducts" prefHeight="270.0" prefWidth="707.0" visible="false" />
+            <ListView id="listViewProducts" fx:id="listViewProducts" prefHeight="270.0" prefWidth="707.0" />
          </content>
       </ScrollPane>
       <ScrollPane id="scrollPaneMenus" fx:id="scrollPaneMenus" layoutX="42.0" layoutY="150.0" prefHeight="287.0" prefWidth="719.0" visible="false">
          <content>
-            <ListView id="listViewMenus" fx:id="listViewMenus" prefHeight="279.0" prefWidth="704.0" visible="false" />
+            <ListView id="listViewMenus" fx:id="listViewMenus" prefHeight="279.0" prefWidth="704.0" />
          </content>
       </ScrollPane>
+      <AnchorPane id="anchorPaneSearchForProduct" fx:id="anchorPaneSearchForProduct" layoutX="27.0" layoutY="144.0" prefHeight="293.0" prefWidth="746.0" visible="false">
+         <children>
+            <Label id="SearchBy" fx:id="lblSearchBy" layoutX="8.0" layoutY="32.0" text="Search by:">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblTitle" fx:id="lblTitle" layoutX="163.0" layoutY="3.0" text="Title">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblRating" fx:id="lblRating" layoutX="282.0" layoutY="3.0" text="Rating">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblCalories" fx:id="lblCalories" layoutX="355.0" layoutY="3.0" text="Calories">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblProtein" fx:id="lblProtein" layoutX="434.0" layoutY="3.0" text="Protein">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblFat" fx:id="lblFat" layoutX="526.0" layoutY="3.0" text="Fat">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblSodium" fx:id="lblSodium" layoutX="588.0" layoutY="3.0" text="Sodium">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <Label id="lblPrice" fx:id="lblPrice" layoutX="674.0" layoutY="3.0" text="Price">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Label>
+            <TextField id="tfTitle" fx:id="tfTitle" layoutX="94.0" layoutY="31.0" prefHeight="25.0" prefWidth="175.0" />
+            <TextField id="tfRating" fx:id="tfRating" layoutX="272.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <TextField id="tfCalories" fx:id="tfCalories" layoutX="349.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <TextField id="tfProtein" fx:id="tfProtein" layoutX="426.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <TextField id="tfFat" fx:id="tfFat" layoutX="503.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <TextField id="tfSodium" fx:id="tfSodium" layoutX="580.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <TextField id="tfPrice" fx:id="tfPrice" layoutX="657.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
+            <Button id="btnSearch" fx:id="btnSearch" layoutX="336.0" layoutY="66.0" mnemonicParsing="false" onAction="#search" text="Search">
+               <font>
+                  <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Button>
+            <ScrollPane id="scrollPaneSearchForProduct" fx:id="scrollPaneSearchForProduct" layoutY="111.0" prefHeight="182.0" prefWidth="754.0" visible="false">
+               <content>
+                  <ListView id="listViewSearchForProduct" fx:id="listViewSearchForProduct" prefHeight="179.0" prefWidth="737.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

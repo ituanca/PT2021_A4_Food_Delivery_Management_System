@@ -9,24 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/CompositeProduct.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/DeliveryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/businessLayer/IDeliveryServiceProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AddProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/AdministratorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/CreateNewProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/CreateNewProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/InterfaceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/InterfaceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/ModifyProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/SignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/addProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/addProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/administrator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/administrator.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/client.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/createNewProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/createNewProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/deleteProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/logIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/logIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/modifyProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/signUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentationLayer/fxmlFiles/signUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +22,8 @@
       <list>
         <option value="package-info" />
         <option value="FxmlFile" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -63,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pt2021_30422_itu_anca_assignment_3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
