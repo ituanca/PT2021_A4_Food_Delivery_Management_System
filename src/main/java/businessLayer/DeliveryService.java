@@ -3,6 +3,9 @@ package businessLayer;
 import dataLayer.Serializator;
 
 import java.io.*;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -10,10 +13,10 @@ import java.util.stream.Stream;
 
 public class DeliveryService implements IDeliveryServiceProcessing{
 
-    Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<Order, ArrayList<MenuItem>>();     // stores the order related information
-    List<MenuItem> menu = new ArrayList<MenuItem>();                          // saves the menu (all the products) provided by the catering company
-    List<BaseProduct> menuBaseProducts = new ArrayList<>();            // saves the base products from the menu
-    List<CompositeProduct> menuCompositeProducts = new ArrayList<>();  // saves the composite products from the menu
+    Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<>();     // stores the order related information
+    List<MenuItem> menu = new ArrayList<MenuItem>();                  // saves the menu (all the products) provided by the catering company
+    List<BaseProduct> menuBaseProducts = new ArrayList<>();                                     // saves the base products from the menu
+    List<CompositeProduct> menuCompositeProducts = new ArrayList<>();                           // saves the composite products from the menu
 
     @Override
     public void importProducts() throws IOException {
@@ -181,7 +184,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         return resultedArrayList;
     }
 
-    public List<MenuItem> createMenu(){
+    public List<MenuItem> createTheEntireMenu(){
         menuBaseProducts = readBaseProducts();
         menuCompositeProducts = readCompositeProducts();
         menu.addAll(menuBaseProducts);
@@ -189,21 +192,62 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         return menu;
     }
 
-    public List<MenuItem> createClientOrder(String stringMenuItem){
-        List<MenuItem> clientOrder = new ArrayList<>();
-        createMenu();
-        for(MenuItem menuItem : menu){
-            if(menuItem.toString().equals(stringMenuItem)){
-                clientOrder.add(menuItem);
-                break;
-            }
+    @Override
+    public void createOrder(ArrayList<MenuItem> selectedProducts) {
+        ordersList = readOrders();
+        UserSession instance = UserSession.getInstance();
+        System.out.println(instance.getId() + " " + instance.getUserName() + " " + instance.getPassword() + " " + instance.getUserType());
+        Order order = new Order(computeOrderId(), instance.getId(), LocalDateTime.now());
+        System.out.println("order date: " + order.orderDate);
+        ordersList.put(order, selectedProducts);
+        System.out.println("Deserialized HashMap:");
+        Set set = ordersList.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
         }
-        return clientOrder;
+        writeOrders();
     }
 
-    @Override
-    public void createOrder() {
+    private Integer computeOrderId(){
+        int orderNo = 1;
+        Set set = ordersList.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry = (Map.Entry)iterator.next();
+            orderNo++;
+        }
+        return orderNo;
+    }
 
+    public Integer computeOrderPrice(ArrayList<MenuItem> orderProducts){
+        int orderPrice = 0;
+        for(MenuItem menuItem : orderProducts){
+            orderPrice += menuItem.getPrice();
+        }
+        return orderPrice;
+    }
+
+    public void addSelectedProductToArrayOfStrings(ArrayList<String> selectedProducts, String product){
+        selectedProducts.add(product);
+    }
+
+    public ArrayList<MenuItem> createArrayOfProductsOfOrder(ArrayList<String> selectedProducts){
+        ArrayList<MenuItem> productsOfOrder = new ArrayList<>();
+        for(String selectedProduct: selectedProducts){
+            productsOfOrder.add(getCorrespondingMenuItem(selectedProduct));
+        }
+        return productsOfOrder;
+    }
+
+    public MenuItem getCorrespondingMenuItem(String stringMenuItem){
+        for(MenuItem menuItem : menu){
+            if(menuItem.toString().equals(stringMenuItem)){
+                return menuItem;
+            }
+        }
+        return null;
     }
 
     public List<BaseProduct> readBaseProducts(){
@@ -212,10 +256,12 @@ public class DeliveryService implements IDeliveryServiceProcessing{
 
     private void writeBaseProducts(){ new Serializator().serializeMenuBaseProducts(menuBaseProducts); }
 
-    public List<CompositeProduct> readCompositeProducts(){
-        return new Serializator().deserializeCompositeProducts();
-    }
+    public List<CompositeProduct> readCompositeProducts(){ return new Serializator().deserializeCompositeProducts(); }
 
     private void writeCompositeProducts(){ new Serializator().serializeCompositeProducts(menuCompositeProducts); }
+
+    public  HashMap<Order, ArrayList<MenuItem>> readOrders(){ return new Serializator().deserializeOrders(); }
+
+    private void writeOrders(){ new Serializator().serializeOrders(ordersList); }
 
 }

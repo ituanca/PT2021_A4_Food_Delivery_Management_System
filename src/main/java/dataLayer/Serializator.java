@@ -1,12 +1,9 @@
 package dataLayer;
 
-import businessLayer.BaseProduct;
-import businessLayer.CompositeProduct;
-import businessLayer.User;
+import businessLayer.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Serializator {
 
@@ -89,6 +86,33 @@ public class Serializator {
             e.printStackTrace();
         }
         return menuCompositeProducts;
+    }
+
+    public void serializeOrders(Map<Order, ArrayList<MenuItem>> ordersList) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("src\\main\\resources\\orders.ser");
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(ordersList);
+            objectOut.flush();
+            objectOut.close();
+            fileOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public HashMap<Order, ArrayList<MenuItem>> deserializeOrders() {
+        HashMap<Order, ArrayList<MenuItem>> ordersList = new HashMap<>();
+        try {
+            FileInputStream fileIn = new FileInputStream("src\\main\\resources\\orders.ser");
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            ordersList = (HashMap<Order, ArrayList<MenuItem>>) objectIn.readObject();
+            objectIn.close();
+            fileIn.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return ordersList;
     }
 
 }

@@ -25,17 +25,17 @@
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnSearchForProduct" fx:id="btnSearchForProduct" layoutX="312.0" layoutY="94.0" mnemonicParsing="false" onAction="#searchForProduct" text="Search for product">
+      <Button id="btnSearchForProduct" fx:id="btnSearchForProduct" layoutX="312.0" layoutY="94.0" mnemonicParsing="false" onAction="#openSearchForProductWindow" text="Search for product">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnCreateOrder" fx:id="btnCreateOrder" layoutX="644.0" layoutY="94.0" mnemonicParsing="false" onAction="#createOrder" text="Create order">
+      <Button id="btnOpenCreateOrderWindow" fx:id="btnOpenCreateOrderWindow" layoutX="644.0" layoutY="94.0" mnemonicParsing="false" onAction="#openCreateOrderWindow" text="Create order">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="666.0" layoutY="568.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="674.0" layoutY="575.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
@@ -99,7 +99,7 @@
             <TextField id="tfFat" fx:id="tfFat" layoutX="503.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
             <TextField id="tfSodium" fx:id="tfSodium" layoutX="580.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
             <TextField id="tfPrice" fx:id="tfPrice" layoutX="657.0" layoutY="31.0" prefHeight="25.0" prefWidth="74.0" />
-            <Button id="btnSearch" fx:id="btnSearch" layoutX="336.0" layoutY="66.0" mnemonicParsing="false" onAction="#search" text="Search">
+            <Button id="btnSearch" fx:id="btnSearch" layoutX="336.0" layoutY="66.0" mnemonicParsing="false" onAction="#searchForProduct" text="Search">
                <font>
                   <Font name="Bodoni MT" size="18.0" />
                </font>
@@ -111,7 +111,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Button id="btnSearchForMenu" fx:id="btnSearchForMenu" layoutX="486.0" layoutY="94.0" mnemonicParsing="false" onAction="#searchForMenu" text="Search for menu">
+      <Button id="btnSearchForMenu" fx:id="btnSearchForMenu" layoutX="486.0" layoutY="94.0" mnemonicParsing="false" onAction="#openSearchForMenuWindow" text="Search for menu">
          <font>
             <Font name="Bodoni MT" size="18.0" />
          </font>
@@ -140,18 +140,18 @@
                   <ListView id="listViewSearchForMenu" fx:id="listViewSearchForMenu" prefHeight="323.0" prefWidth="690.0" />
                </content>
             </ScrollPane>
-            <Button id="btnSearchMenu" fx:id="btnSearchMenu" layoutX="521.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchMenu" text="Search">
+            <Button id="btnSearchMenu" fx:id="btnSearchMenu" layoutX="521.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchForMenu" text="Search">
                <font>
                   <Font name="Bodoni MT" size="18.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane id="anchorPaneCreateOrder" fx:id="anchorPaneCreateOrder" layoutX="42.0" layoutY="134.0" prefHeight="434.0" prefWidth="719.0" visible="false">
+      <AnchorPane id="anchorPaneCreateOrder" fx:id="anchorPaneCreateOrder" layoutX="42.0" layoutY="134.0" prefHeight="435.0" prefWidth="719.0" visible="false">
          <children>
             <ScrollPane id="scrollPaneProductsForOrder" fx:id="scrollPaneProductsForOrder" layoutY="29.0" prefHeight="156.0" prefWidth="719.0">
                <content>
-                  <ListView id="listViewProductsForOrder" fx:id="listViewProductsForOrder" onEditCommit="#selectProductForOrder" prefHeight="152.0" prefWidth="711.0" />
+                  <ListView id="listViewProductsForOrder" fx:id="listViewProductsForOrder" prefHeight="152.0" prefWidth="711.0" />
                </content>
             </ScrollPane>
             <Label layoutX="220.0" layoutY="5.0" text="Choose some products for your order:">
@@ -159,25 +159,30 @@
                   <Font name="Bodoni MT" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="316.0" layoutY="198.0" text="Your order:">
+            <Label layoutX="316.0" layoutY="202.0" text="Your order:">
                <font>
                   <Font name="Bodoni MT" size="18.0" />
                </font>
             </Label>
-            <ScrollPane id="scrollPaneFinalOrder" fx:id="scrollPaneFinalOrder" layoutY="222.0" prefHeight="156.0" prefWidth="719.0">
+            <ScrollPane id="scrollPaneFinalOrder" fx:id="scrollPaneFinalOrder" layoutY="227.0" prefHeight="156.0" prefWidth="719.0">
                <content>
-                  <ListView id="listViewFinalOrder" fx:id="listViewFinalOrder" prefHeight="152.0" prefWidth="711.0" />
+                  <ListView id="listViewFinalOrder" fx:id="listViewFinalOrder" prefHeight="161.0" prefWidth="711.0" />
                </content>
             </ScrollPane>
-            <Label layoutX="20.0" layoutY="393.0" text="Order price:">
+            <Label layoutX="20.0" layoutY="399.0" text="Order price:">
                <font>
                   <Font name="Bodoni MT" size="20.0" />
                </font>
             </Label>
-            <TextField id="tfOrderPrice" fx:id="tfOrderPrice" editable="false" layoutX="129.0" layoutY="393.0" />
-            <Button id="btnFinalizeOrder" fx:id="btnFinalizeOrder" layoutX="302.0" layoutY="389.0" mnemonicParsing="false" onAction="#finalizeOrder" text="Create order">
+            <TextField id="tfOrderPrice" fx:id="tfOrderPrice" editable="false" layoutX="129.0" layoutY="399.0" />
+            <Button id="btnFinalizeOrder" fx:id="btnFinalizeOrder" layoutX="302.0" layoutY="395.0" mnemonicParsing="false" onAction="#finalizeOrder" text="Create order">
                <font>
                   <Font name="Bodoni MT" size="18.0" />
+               </font>
+            </Button>
+            <Button id="btnDeleteSelection" fx:id="btnDeleteSelection" layoutX="592.0" layoutY="190.0" mnemonicParsing="false" onAction="#deleteSelection" text="Delete selection">
+               <font>
+                  <Font name="Bodoni MT" size="16.0" />
                </font>
             </Button>
          </children>

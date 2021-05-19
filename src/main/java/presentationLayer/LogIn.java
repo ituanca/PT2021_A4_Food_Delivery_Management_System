@@ -1,6 +1,7 @@
 package presentationLayer;
 
 import businessLayer.User;
+import businessLayer.UserSession;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ public class LogIn implements Initializable, Window {
     public PasswordField pfPassword;
     public Button btnLogIn;
     public Button btnGoBack;
+    int id;
 
     @Override
     public void create(Stage window, Scene scene) {
@@ -29,10 +31,11 @@ public class LogIn implements Initializable, Window {
         nextWindow = window;
     }
 
-    private boolean checkUserExistence(){
+    private boolean checkUserExistenceAndCreateUser(){
         ArrayList<User> users  = readUsers();
         for(User user: users){
             if(getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && getUserType().equals(user.getUserType())){
+                id = user.getId();
                 return true;
             }
         }
@@ -51,7 +54,7 @@ public class LogIn implements Initializable, Window {
             alert.show();
             return false;
         }
-        if(!checkUserExistence()){
+        if(!checkUserExistenceAndCreateUser()){
             alert.setContentText("User not found");
             alert.show();
             return false;
@@ -66,6 +69,8 @@ public class LogIn implements Initializable, Window {
 
     public void logIn(ActionEvent actionEvent) throws IOException {
         if(validate()) {
+            UserSession.setInstance(null);
+            System.out.println(UserSession.getInstance(id, getUsername(), getPassword(), getUserType()));
             if (getUserType().equals("administrator")) {
                 Start.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
@@ -76,7 +81,7 @@ public class LogIn implements Initializable, Window {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
+        Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
         Start.create(nextWindow, scene);
     }
 

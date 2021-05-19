@@ -1,18 +1,19 @@
 package presentationLayer;
 
 import businessLayer.DeliveryService;
-import businessLayer.SearchingForProduct;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ClientController implements Window, Initializable {
@@ -21,7 +22,7 @@ public class ClientController implements Window, Initializable {
     public Button btnViewProducts;
     public Button btnViewMenus;
     public Button btnSearchForProduct;
-    public Button btnCreateOrder;
+    public Button btnOpenCreateOrderWindow;
     public ScrollPane scrollPaneProducts;
     public ListView listViewProducts;
     public ScrollPane scrollPaneMenus;
@@ -59,8 +60,10 @@ public class ClientController implements Window, Initializable {
     public ListView listViewFinalOrder;
     public TextField tfOrderPrice;
     public Button btnFinalizeOrder;
+    public Button btnDeleteSelection;
 
     DeliveryService deliveryService = new DeliveryService();
+    ArrayList<String> selectedProducts = new ArrayList<>();
 
     @Override
     public void create(Stage window, Scene scene) {
@@ -102,7 +105,7 @@ public class ClientController implements Window, Initializable {
         return true;
     }
 
-    public void searchForProduct(ActionEvent actionEvent) {
+    public void openSearchForProductWindow(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
         scrollPaneMenus.setVisible(false);
         anchorPaneSearchForProduct.setVisible(true);
@@ -111,7 +114,7 @@ public class ClientController implements Window, Initializable {
         anchorPaneCreateOrder.setVisible(false);
     }
 
-    public void search(ActionEvent actionEvent) {
+    public void searchForProduct(ActionEvent actionEvent) {
         if (validate()) {
             listViewSearchForProduct.getItems().clear();
             scrollPaneSearchForProduct.setVisible(true);
@@ -129,7 +132,7 @@ public class ClientController implements Window, Initializable {
         return true;
     }
 
-    public void searchForMenu(ActionEvent actionEvent) {
+    public void openSearchForMenuWindow(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
         scrollPaneMenus.setVisible(false);
         anchorPaneSearchForProduct.setVisible(false);
@@ -137,7 +140,7 @@ public class ClientController implements Window, Initializable {
         anchorPaneCreateOrder.setVisible(false);
     }
 
-    public void searchMenu(ActionEvent actionEvent) {
+    public void searchForMenu(ActionEvent actionEvent) {
         if (validateMenu()) {
             listViewSearchForMenu.getItems().clear();
             scrollPaneSearchForMenu.setVisible(true);
@@ -145,21 +148,51 @@ public class ClientController implements Window, Initializable {
         }
     }
 
-    public void createOrder(ActionEvent actionEvent) {
+    public void openCreateOrderWindow(ActionEvent actionEvent) {
         scrollPaneProducts.setVisible(false);
         scrollPaneMenus.setVisible(false);
         anchorPaneSearchForProduct.setVisible(false);
         anchorPaneSearchForMenu.setVisible(false);
         anchorPaneCreateOrder.setVisible(true);
-        listViewProductsForOrder.getItems().addAll(deliveryService.createMenu());
+        listViewProductsForOrder.getItems().addAll(deliveryService.createTheEntireMenu());
+        selectProductForOrder();
     }
 
-    // nu se selecteaza
-    public void selectProductForOrder(ListView.EditEvent editEvent) {
-        listViewFinalOrder.getItems().addAll(deliveryService.createClientOrder(listViewProductsForOrder.getSelectionModel().getSelectedItem().toString()));
+    public void selectProductForOrder(){
+        listViewProductsForOrder.setOnMouseClicked(new ListViewHandler(){
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                listViewFinalOrder.getItems().add(listViewProductsForOrder.getSelectionModel().getSelectedItem());
+                deliveryService.addSelectedProductToArrayOfStrings(selectedProducts, listViewProductsForOrder.getSelectionModel().getSelectedItem().toString());
+                if(listViewFinalOrder.getItems().size() > 0) {
+                    tfOrderPrice.setText(String.valueOf(deliveryService.computeOrderPrice(deliveryService.createArrayOfProductsOfOrder(selectedProducts))));
+                }
+            }
+        });
+    }
+
+    public void deleteSelection(ActionEvent actionEvent) {
+        if(listViewFinalOrder.getItems().size() > 0 && selectedProducts.size() > 0){
+            listViewFinalOrder.getItems().remove(listViewFinalOrder.getItems().size() - 1);
+            selectedProducts.remove(selectedProducts.size() - 1);
+            tfOrderPrice.setText(String.valueOf(deliveryService.computeOrderPrice(deliveryService.createArrayOfProductsOfOrder(selectedProducts))));
+        }
+    }
+
+    private boolean validateOrder(){
+        if(listViewFinalOrder.getItems().size() == 0){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select some products for your order");
+            alert.show();
+            return false;
+        }
+        return true;
     }
 
     public void finalizeOrder(ActionEvent actionEvent) {
+        if(validateOrder()){
+            deliveryService.createOrder(deliveryService.createArrayOfProductsOfOrder(selectedProducts));
+        }
     }
 
     private String getTitle() { return tfTitle.getText(); }
@@ -224,9 +257,7 @@ public class ClientController implements Window, Initializable {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 640);
+        Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
         Start.create(nextWindow, scene);
     }
-
-
 }

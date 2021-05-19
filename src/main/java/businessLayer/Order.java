@@ -1,8 +1,9 @@
 package businessLayer;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Order {
+public class Order implements Serializable {
     public int orderID;
     public int clientID;
     public LocalDateTime orderDate;
@@ -43,5 +44,12 @@ public class Order {
         }
         Order order = (Order) o;
         return getOrderID() == order.getOrderID() && getClientID() == order.getClientID() && getOrderDate().equals(order.getOrderDate());
+    }
+
+    @Override
+    public String toString() {
+        return "orderID=" + orderID +
+                ", clientID=" + clientID +
+                ", orderDate=" + orderDate;
     }
 }

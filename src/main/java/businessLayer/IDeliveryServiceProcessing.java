@@ -17,5 +17,5 @@ public interface IDeliveryServiceProcessing {
     ArrayList<String> viewMenus();
     ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price);
     ArrayList<String> searchForMenu(String itemTitle, int price);
-    void createOrder();
+    void createOrder(ArrayList<MenuItem> selectedProducts);
 }

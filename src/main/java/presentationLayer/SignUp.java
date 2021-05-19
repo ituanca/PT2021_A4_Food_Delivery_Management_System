@@ -1,6 +1,8 @@
 package presentationLayer;
 
 import businessLayer.User;
+import businessLayer.UserSession;
+import dataLayer.FileManager;
 import dataLayer.Serializator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -70,7 +72,13 @@ public class SignUp implements Initializable, Window {
     public void signUp(ActionEvent actionEvent) throws IOException {
         if(validate()){
             ArrayList<User> usersList = readUsers();
-            User user = new User(computeUserID(usersList), getUsername(), getPassword(), getUserType());
+            int id = computeUserID(usersList);
+
+            UserSession.setInstance(null);
+            System.out.println(UserSession.getInstance(id, getUsername(), getPassword(), getUserType()));
+
+            User user = new User(id, getUsername(), getPassword(), getUserType());
+            new FileManager().writeNewUser(user);
             addToList(usersList, Stream.of(user));
             writeUsers(usersList);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -105,7 +113,7 @@ public class SignUp implements Initializable, Window {
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
-        Scene scene = new Scene( FXMLLoader.load(url), 800, 500);
+        Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
         Start.create(nextWindow, scene);
     }
 
