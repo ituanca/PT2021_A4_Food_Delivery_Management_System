@@ -3,9 +3,7 @@ package businessLayer;
 import dataLayer.Serializator;
 
 import java.io.*;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,8 +11,8 @@ import java.util.stream.Stream;
 
 public class DeliveryService implements IDeliveryServiceProcessing{
 
-    Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<>();     // stores the order related information
-    List<MenuItem> menu = new ArrayList<MenuItem>();                  // saves the menu (all the products) provided by the catering company
+    Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<>();            // stores the order related information
+    List<MenuItem> menu = new ArrayList<MenuItem>();                                // saves the menu (all the products) provided by the catering company
     List<BaseProduct> menuBaseProducts = new ArrayList<>();                                     // saves the base products from the menu
     List<CompositeProduct> menuCompositeProducts = new ArrayList<>();                           // saves the composite products from the menu
 
@@ -115,8 +113,8 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public void generateReports() {
-
+    public void generateReportOfOrders(String startHour, String endHour) {
+        TimeIntervalOfTheOrders.getOrdersFromTimeInterval(startHour, endHour, readOrders());
     }
 
     @Override
@@ -138,7 +136,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
+    public ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {     // lambda expression
         menuBaseProducts = readBaseProducts();
         return getListOfProducts(
                 menuBaseProducts,
@@ -160,7 +158,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public ArrayList<String> searchForMenu(String itemTitle, int price) {
+    public ArrayList<String> searchForMenu(String itemTitle, int price) {       // lambda expression
         menuCompositeProducts = readCompositeProducts();
         return getListOfCompositeProducts(
                 menuCompositeProducts,
@@ -198,14 +196,13 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         UserSession instance = UserSession.getInstance();
         System.out.println(instance.getId() + " " + instance.getUserName() + " " + instance.getPassword() + " " + instance.getUserType());
         Order order = new Order(computeOrderId(), instance.getId(), LocalDateTime.now());
-        System.out.println("order date: " + order.orderDate);
         ordersList.put(order, selectedProducts);
-        System.out.println("Deserialized HashMap:");
         Set set = ordersList.entrySet();
         Iterator iterator = set.iterator();
         while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+            Map.Entry entry = (Map.Entry)iterator.next();
             System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
+            System.out.println();
         }
         writeOrders();
     }
@@ -242,7 +239,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     public MenuItem getCorrespondingMenuItem(String stringMenuItem){
-        for(MenuItem menuItem : menu){
+        for(MenuItem menuItem : createTheEntireMenu()){
             if(menuItem.toString().equals(stringMenuItem)){
                 return menuItem;
             }
@@ -250,9 +247,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         return null;
     }
 
-    public List<BaseProduct> readBaseProducts(){
-        return new Serializator().deserializeMenuBaseProducts();
-    }
+    public List<BaseProduct> readBaseProducts(){ return new Serializator().deserializeMenuBaseProducts(); }
 
     private void writeBaseProducts(){ new Serializator().serializeMenuBaseProducts(menuBaseProducts); }
 

@@ -6,61 +6,61 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.AddProductController">
+<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.AddProductController">
    <children>
-      <Label layoutX="334.0" layoutY="66.0" text="Add product">
+      <Label layoutX="431.0" layoutY="67.0" text="Add product">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="252.0" layoutY="179.0" text="Title:">
+      <Label layoutX="351.0" layoutY="179.0" text="Title:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfTitle" fx:id="tfTitle" layoutX="373.0" layoutY="179.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="217.0" text="Rating:">
+      <TextField id="tfTitle" fx:id="tfTitle" layoutX="472.0" layoutY="179.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="217.0" text="Rating:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfRating" fx:id="tfRating" layoutX="373.0" layoutY="217.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="256.0" text="Calories:">
+      <TextField id="tfRating" fx:id="tfRating" layoutX="472.0" layoutY="217.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="256.0" text="Calories:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfCalories" fx:id="tfCalories" layoutX="373.0" layoutY="256.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="296.0" text="Protein:">
+      <TextField id="tfCalories" fx:id="tfCalories" layoutX="472.0" layoutY="256.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="296.0" text="Protein:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfProtein" fx:id="tfProtein" layoutX="373.0" layoutY="296.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="336.0" text="Fat:">
+      <TextField id="tfProtein" fx:id="tfProtein" layoutX="472.0" layoutY="296.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="336.0" text="Fat:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfFat" fx:id="tfFat" layoutX="373.0" layoutY="336.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="376.0" text="Sodium:">
+      <TextField id="tfFat" fx:id="tfFat" layoutX="472.0" layoutY="336.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="376.0" text="Sodium:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfSodium" fx:id="tfSodium" layoutX="373.0" layoutY="376.0" prefHeight="25.0" prefWidth="207.0" />
-      <Label layoutX="252.0" layoutY="416.0" text="Price:">
+      <TextField id="tfSodium" fx:id="tfSodium" layoutX="472.0" layoutY="376.0" prefHeight="25.0" prefWidth="207.0" />
+      <Label layoutX="351.0" layoutY="416.0" text="Price:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfPrice" fx:id="tfPrice" layoutX="373.0" layoutY="416.0" prefHeight="25.0" prefWidth="207.0" />
-      <Button id="btnAddProduct" fx:id="btnAddProduct" layoutX="341.0" layoutY="477.0" mnemonicParsing="false" onAction="#addProduct" text="Add product">
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="472.0" layoutY="416.0" prefHeight="25.0" prefWidth="207.0" />
+      <Button id="btnAddProduct" fx:id="btnAddProduct" layoutX="440.0" layoutY="477.0" mnemonicParsing="false" onAction="#addProduct" text="Add product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="669.0" layoutY="570.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="835.0" layoutY="567.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>

@@ -53,8 +53,8 @@ public class AdministratorController implements Window{
         Start.openNextWindow("createNewProduct", new CreateNewProductController());
     }
 
-    public void generateReports(ActionEvent actionEvent) {
-
+    public void generateReports(ActionEvent actionEvent) throws IOException {
+        Start.openNextWindow("generateReports", new GenerateReportsController());
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {

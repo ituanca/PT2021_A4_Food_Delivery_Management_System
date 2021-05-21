@@ -7,67 +7,67 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.ModifyProductController">
+<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.ModifyProductController">
    <children>
-      <Label layoutX="299.0" layoutY="76.0" text="Modify product">
+      <Label layoutX="411.0" layoutY="76.0" text="Modify product">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="278.0" layoutY="142.0" text="Choose product to modify:">
+      <Label layoutX="390.0" layoutY="142.0" text="Choose product to modify:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="184.0" layoutY="174.0" onAction="#selectProduct" prefHeight="25.0" prefWidth="409.0" style="-fx-background-color: white;" />
-      <Label id="lblTitle" fx:id="lblTitle" layoutX="240.0" layoutY="218.0" text="Title:" visible="false">
+      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="140.0" layoutY="175.0" onAction="#selectProduct" prefHeight="25.0" prefWidth="720.0" style="-fx-background-color: white;" />
+      <Label id="lblTitle" fx:id="lblTitle" layoutX="348.0" layoutY="219.0" text="Title:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfTitle" fx:id="tfTitle" layoutX="329.0" layoutY="218.0" prefHeight="0.0" prefWidth="207.0" visible="false" />
-      <Label id="lblRating" fx:id="lblRating" layoutX="240.0" layoutY="257.0" text="Rating:" visible="false">
+      <TextField id="tfTitle" fx:id="tfTitle" layoutX="437.0" layoutY="219.0" prefHeight="0.0" prefWidth="207.0" visible="false" />
+      <Label id="lblRating" fx:id="lblRating" layoutX="348.0" layoutY="258.0" text="Rating:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfRating" fx:id="tfRating" layoutX="329.0" layoutY="257.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Label id="lblCalories" fx:id="lblCalories" layoutX="240.0" layoutY="294.0" text="Calories:" visible="false">
+      <TextField id="tfRating" fx:id="tfRating" layoutX="437.0" layoutY="258.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblCalories" fx:id="lblCalories" layoutX="348.0" layoutY="295.0" text="Calories:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfCalories" fx:id="tfCalories" layoutX="329.0" layoutY="294.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Label id="lblProtein" fx:id="lblProtein" layoutX="240.0" layoutY="331.0" text="Protein:" visible="false">
+      <TextField id="tfCalories" fx:id="tfCalories" layoutX="437.0" layoutY="295.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblProtein" fx:id="lblProtein" layoutX="348.0" layoutY="332.0" text="Protein:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfProtein" fx:id="tfProtein" layoutX="329.0" layoutY="331.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Label id="lblFat" fx:id="lblFat" layoutX="240.0" layoutY="368.0" text="Fat:" visible="false">
+      <TextField id="tfProtein" fx:id="tfProtein" layoutX="437.0" layoutY="332.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblFat" fx:id="lblFat" layoutX="348.0" layoutY="369.0" text="Fat:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfFat" fx:id="tfFat" layoutX="329.0" layoutY="368.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Label id="lblSodium" fx:id="lblSodium" layoutX="240.0" layoutY="406.0" text="Sodium:" visible="false">
+      <TextField id="tfFat" fx:id="tfFat" layoutX="437.0" layoutY="369.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblSodium" fx:id="lblSodium" layoutX="348.0" layoutY="407.0" text="Sodium:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfSodium" fx:id="tfSodium" layoutX="329.0" layoutY="406.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Label id="lblPrice" fx:id="lblPrice" layoutX="240.0" layoutY="443.0" text="Price:" visible="false">
+      <TextField id="tfSodium" fx:id="tfSodium" layoutX="437.0" layoutY="407.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Label id="lblPrice" fx:id="lblPrice" layoutX="348.0" layoutY="444.0" text="Price:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <TextField id="tfPrice" fx:id="tfPrice" layoutX="329.0" layoutY="443.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
-      <Button id="btnModifyProduct" fx:id="btnModifyProduct" layoutX="313.0" layoutY="498.0" mnemonicParsing="false" onAction="#modifyProduct" text="Modify product" visible="false">
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="437.0" layoutY="444.0" prefHeight="25.0" prefWidth="207.0" visible="false" />
+      <Button id="btnModifyProduct" fx:id="btnModifyProduct" layoutX="421.0" layoutY="499.0" mnemonicParsing="false" onAction="#modifyProduct" text="Modify product" visible="false">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="668.0" layoutY="569.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="827.0" layoutY="569.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>

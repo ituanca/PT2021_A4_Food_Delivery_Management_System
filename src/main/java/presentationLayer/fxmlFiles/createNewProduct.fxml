@@ -6,49 +6,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CreateNewProductController">
+<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightBlue;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.CreateNewProductController">
    <children>
-      <Label layoutX="306.0" layoutY="75.0" text="Create daily menu">
+      <Label layoutX="403.0" layoutY="70.0" text="Create daily menu">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="250.0" layoutY="163.0" text="Choose number of dishes for the menu:">
+      <Label layoutX="347.0" layoutY="158.0" text="Choose number of dishes for the menu:">
       <font>
          <Font name="Bodoni MT" size="20.0" />
       </font>
       </Label>
-      <ComboBox id="cbNoOfDishes" fx:id="cbNoOfDishes" layoutX="335.0" layoutY="197.0" onAction="#selectNoOfDishes" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: white;" />
-      <Label id="lblDish1" fx:id="lblDish1" layoutX="194.0" layoutY="252.0" text="Dish 1:" visible="false">
+      <ComboBox id="cbNoOfDishes" fx:id="cbNoOfDishes" layoutX="432.0" layoutY="192.0" onAction="#selectNoOfDishes" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: white;" />
+      <Label id="lblDish1" fx:id="lblDish1" layoutX="283.0" layoutY="252.0" text="Dish 1:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Label id="lblDish2" fx:id="lblDish2" layoutX="194.0" layoutY="296.0" text="Dish 2:" visible="false">
+      <Label id="lblDish2" fx:id="lblDish2" layoutX="283.0" layoutY="296.0" text="Dish 2:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Label id="lblDish3" fx:id="lblDish3" layoutX="194.0" layoutY="338.0" text="Dish 3:" visible="false">
+      <Label id="lblDish3" fx:id="lblDish3" layoutX="283.0" layoutY="338.0" text="Dish 3:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Label id="lblDish4" fx:id="lblDish4" layoutX="194.0" layoutY="381.0" text="Dish 4:" visible="false">
+      <Label id="lblDish4" fx:id="lblDish4" layoutX="283.0" layoutY="381.0" text="Dish 4:" visible="false">
          <font>
-            <Font name="Bodoni MT" size="18.0" />
+            <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <ComboBox id="cbDish1" fx:id="cbDish1" layoutX="256.0" layoutY="250.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
-      <ComboBox id="cbDish2" fx:id="cbDish2" layoutX="256.0" layoutY="294.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
-      <ComboBox id="cbDish3" fx:id="cbDish3" layoutX="256.0" layoutY="336.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
-      <ComboBox id="cbDish4" fx:id="cbDish4" layoutX="256.0" layoutY="379.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
-      <Button id="btnCreateProduct" fx:id="btnCreateProduct" layoutX="332.0" layoutY="439.0" mnemonicParsing="false" onAction="#createProduct" text="Create product" visible="false">
+      <ComboBox id="cbDish1" fx:id="cbDish1" layoutX="352.0" layoutY="251.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
+      <ComboBox id="cbDish2" fx:id="cbDish2" layoutX="352.0" layoutY="295.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
+      <ComboBox id="cbDish3" fx:id="cbDish3" layoutX="352.0" layoutY="337.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
+      <ComboBox id="cbDish4" fx:id="cbDish4" layoutX="352.0" layoutY="380.0" prefHeight="25.0" prefWidth="374.0" style="-fx-background-color: white;" visible="false" />
+      <Button id="btnCreateProduct" fx:id="btnCreateProduct" layoutX="428.0" layoutY="440.0" mnemonicParsing="false" onAction="#createProduct" text="Create product" visible="false">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="680.0" layoutY="572.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="839.0" layoutY="567.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>

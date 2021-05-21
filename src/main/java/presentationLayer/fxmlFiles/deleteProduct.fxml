@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="800.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.DeleteProductController">
+<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.DeleteProductController">
    <children>
-      <Label layoutX="319.0" layoutY="69.0" text="Delete product">
+      <Label layoutX="432.0" layoutY="69.0" text="Delete product">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="42.0" layoutY="213.0" prefHeight="25.0" prefWidth="715.0" style="-fx-background-color: white;" />
-      <Label layoutX="290.0" layoutY="167.0" text="Choose product to delete:">
+      <ComboBox id="cbProduct" fx:id="cbProduct" layoutX="154.0" layoutY="213.0" prefHeight="25.0" prefWidth="720.0" style="-fx-background-color: white;" />
+      <Label layoutX="403.0" layoutY="167.0" text="Choose product to delete:">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Button id="btnDeleteProduct" fx:id="btnDeleteProduct" layoutX="320.0" layoutY="356.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
+      <Button id="btnDeleteProduct" fx:id="btnDeleteProduct" layoutX="438.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="673.0" layoutY="573.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
+      <Button id="btnGoBack" fx:id="btnGoBack" layoutX="823.0" layoutY="566.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>

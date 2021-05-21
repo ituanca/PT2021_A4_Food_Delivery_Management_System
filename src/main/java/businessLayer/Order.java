@@ -17,7 +17,7 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         int value = orderDate != null ? 1 : orderDate.hashCode();
-        value = 17 * value + orderID == 0 ? 0 : 8 * orderID + 22 * value + clientID == 0 ? 2 : 15 * clientID;
+        value = 17 * value + orderID == 0 ? 0 : 13 * orderID + 19 * value + clientID == 0 ? 2 : 7 * clientID;
         return value;
         //return Objects.hash(getOrderID(), getClientID(), getOrderDate());
     }

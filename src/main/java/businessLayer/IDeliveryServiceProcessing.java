@@ -12,7 +12,7 @@ public interface IDeliveryServiceProcessing {
     void deleteProduct(BaseProduct productToDelete);
     void modifyProduct(BaseProduct selectedProduct, String title, double rating, int calories, int protein, int fat, int sodium, int price);
     void createCompositeProduct(ArrayList<MenuItem> listOfMenuItems);
-    void generateReports();
+    void generateReportOfOrders(String startHour, String endHour);
     ArrayList<String> viewProducts();
     ArrayList<String> viewMenus();
     ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price);
