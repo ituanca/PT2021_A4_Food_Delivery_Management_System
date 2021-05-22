@@ -105,9 +105,7 @@ public class ClientController implements Window, Initializable {
     private boolean validateSearchForProduct(){
         if( (!tfRating.getText().equals("") && getRating() == -1) || (!tfCalories.getText().equals("") && getCalories() == -1) || (!tfProtein.getText().equals("") && getProtein() == -1) ||
                 (!tfFat.getText().equals("") && getFat() == -1) || (!tfSodium.getText().equals("") && getSodium() == -1) || (!tfPriceSearchForProduct.getText().equals("") && getPriceSearchForProduct() == -1)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Invalid data");
-            alert.show();
+            showAlert(Alert.AlertType.ERROR, "Invalid data");
             return false;
         }
         return true;
@@ -136,9 +134,7 @@ public class ClientController implements Window, Initializable {
 
     private boolean validateMenu(){
         if(!tfPriceMenu.getText().equals("") && getPriceMenu() == -1){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Invalid data");
-            alert.show();
+            showAlert(Alert.AlertType.ERROR, "Invalid data");
             return false;
         }
         return true;
@@ -180,9 +176,7 @@ public class ClientController implements Window, Initializable {
 
     private boolean validateOrder(){
         if(listViewFinalOrder.getItems().size() == 0){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Please select some products for your order");
-            alert.show();
+            showAlert(Alert.AlertType.ERROR, "Please select some products for your order");
             return false;
         }
         return true;
@@ -191,7 +185,14 @@ public class ClientController implements Window, Initializable {
     public void finalizeOrder(ActionEvent actionEvent) {
         if(validateOrder()){
             deliveryService.createOrder(deliveryService.createArrayOfProductsOfOrder(selectedProducts));
+            showAlert(Alert.AlertType.CONFIRMATION, "Order was created successfully");
         }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String message){
+        Alert alert = new Alert(alertType);
+        alert.setContentText(message);
+        alert.show();
     }
 
     private String getTitleSearchForProduct() { return tfTitleSearchForProduct.getText(); }

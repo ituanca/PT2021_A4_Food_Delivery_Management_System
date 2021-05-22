@@ -35,29 +35,6 @@ public class DeliveryService implements IDeliveryServiceProcessing{
         return new BaseProduct(p[0], Double.parseDouble(p[1]), Integer.parseInt(p[2]), Integer.parseInt(p[3]), Integer.parseInt(p[4]), Integer.parseInt(p[5]), Integer.parseInt(p[6]));
     };
 
-    private void printMenuBaseProducts(){
-        int i = 1;
-        for(BaseProduct baseProduct : menuBaseProducts) {
-            System.out.println("id: " + i + " title: " + baseProduct.title + " rating: " + baseProduct.rating + " calories: " + baseProduct.calories +
-                    " protein: " + baseProduct.protein + " fat: " + baseProduct.fat + " sodium: " + baseProduct.sodium +  " price: " + baseProduct.price);
-            i++;
-        }
-    }
-
-    private void printCompositeProducts(){
-        int productNo = 1;
-        menuCompositeProducts = readCompositeProducts();
-        for(CompositeProduct compositeProduct : menuCompositeProducts) {
-            System.out.println("title: " + compositeProduct.title + " price: " + compositeProduct.price);
-            int dishNo = 1;
-            for(MenuItem menuItem: compositeProduct.listOfMenuItems){
-                System.out.println("    dish " + dishNo + ": " + menuItem.toString());
-                dishNo++;
-            }
-            productNo++;
-        }
-    }
-
     @Override
     public void addProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
         menuBaseProducts = readBaseProducts();
@@ -113,8 +90,18 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
-    public void generateReportOfOrders(String startHour, String endHour) {
-        TimeIntervalOfTheOrders.getOrdersFromTimeInterval(startHour, endHour, readOrders());
+    public List<String> generateReportOfOrders(String startHour, String endHour) {
+        return TimeIntervalOfTheOrdersReport.getOrdersFromTimeInterval(startHour, endHour, readOrders());
+    }
+
+    @Override
+    public List<String> generateReportOfProducts(int noOfTimes) {
+        return ProductsOrderedReport.getOrdersAccordingToProductsOrdered(noOfTimes, readOrders());
+    }
+
+    @Override
+    public List<String> generateReportOfClients(int noOfTimes, int priceOfOrder) {
+        return ClientsReport.getClientsThatHaveOrderedMoreThanNoOfTimes(noOfTimes, priceOfOrder, readOrders());
     }
 
     @Override
@@ -194,16 +181,8 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     public void createOrder(ArrayList<MenuItem> selectedProducts) {
         ordersList = readOrders();
         UserSession instance = UserSession.getInstance();
-        System.out.println(instance.getId() + " " + instance.getUserName() + " " + instance.getPassword() + " " + instance.getUserType());
         Order order = new Order(computeOrderId(), instance.getId(), LocalDateTime.now());
         ordersList.put(order, selectedProducts);
-        Set set = ordersList.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry)iterator.next();
-            System.out.println("key: " + entry.getKey() + ", value: " + entry.getValue());
-            System.out.println();
-        }
         writeOrders();
     }
 

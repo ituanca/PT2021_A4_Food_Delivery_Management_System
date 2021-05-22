@@ -50,6 +50,6 @@ public class Order implements Serializable {
     public String toString() {
         return "orderID=" + orderID +
                 ", clientID=" + clientID +
-                ", orderDate=" + orderDate;
+                ", orderDate=" + orderDate.getYear() + '-' + orderDate.getMonth() + '-' + orderDate.getDayOfMonth() + ", " + orderDate.toLocalTime();
     }
 }
