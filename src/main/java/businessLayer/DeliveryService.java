@@ -1,8 +1,13 @@
 package businessLayer;
 
+import businessLayer.reports.ClientsReport;
+import businessLayer.reports.ProductsOrderedInADayReport;
+import businessLayer.reports.ProductsOrderedReport;
+import businessLayer.reports.TimeIntervalOfTheOrdersReport;
 import dataLayer.Serializator;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.function.Function;
@@ -105,6 +110,11 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     @Override
+    public List<String> generateReportOfProductsOrderedInADay(LocalDate day) {
+        return ProductsOrderedInADayReport.getStringProductsOrderedInADay(day, readOrders());
+    }
+
+    @Override
     public ArrayList<String> viewProducts() {
         ArrayList<String> stringProducts = new ArrayList<>();
         for(BaseProduct baseProduct: readBaseProducts()){
@@ -170,10 +180,8 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     }
 
     public List<MenuItem> createTheEntireMenu(){
-        menuBaseProducts = readBaseProducts();
-        menuCompositeProducts = readCompositeProducts();
-        menu.addAll(menuBaseProducts);
-        menu.addAll(menuCompositeProducts);
+        menu.addAll(readBaseProducts());
+        menu.addAll(readCompositeProducts());
         return menu;
     }
 

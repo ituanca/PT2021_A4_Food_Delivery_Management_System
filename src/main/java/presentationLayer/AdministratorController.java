@@ -18,9 +18,11 @@ public class AdministratorController implements Window{
     public Button btnAdd;
     public Button btnDelete;
     public Button btnModify;
+    public Button btnViewProducts;
     public Button btnGenerateReports;
     public Button btnCreate;
     public Button btnGoBack;
+
     DeliveryService deliveryService = new DeliveryService();
 
     @Override
@@ -53,6 +55,10 @@ public class AdministratorController implements Window{
         Start.openNextWindow("createNewProduct", new CreateNewProductController());
     }
 
+    public void viewProducts(ActionEvent actionEvent) throws IOException {
+        Start.openNextWindow("viewProducts", new ViewProductsController());
+    }
+
     public void generateReports(ActionEvent actionEvent) throws IOException {
         Start.openNextWindow("generateReports", new GenerateReportsController());
     }
@@ -62,5 +68,6 @@ public class AdministratorController implements Window{
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
         Start.create(nextWindow, scene);
     }
+
 
 }

@@ -5,44 +5,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.AdministratorController">
+<AnchorPane prefHeight="640.0" prefWidth="1000.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentationLayer.AdministratorController">
    <children>
       <Label layoutX="420.0" layoutY="60.0" text="Administrator">
          <font>
             <Font name="Bodoni MT" size="26.0" />
          </font>
       </Label>
-      <Button id="btnImport" fx:id="btnImport" layoutX="416.0" layoutY="162.0" mnemonicParsing="false" onAction="#importProducts" text="Import products">
+      <Button id="btnImport" fx:id="btnImport" layoutX="416.0" layoutY="145.0" mnemonicParsing="false" onAction="#importProducts" text="Import products">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnAdd" fx:id="btnAdd" layoutX="433.0" layoutY="223.0" mnemonicParsing="false" onAction="#addProduct" text="Add product">
+      <Button id="btnAdd" fx:id="btnAdd" layoutX="433.0" layoutY="202.0" mnemonicParsing="false" onAction="#addProduct" text="Add product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnDelete" fx:id="btnDelete" layoutX="424.0" layoutY="282.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
+      <Button id="btnDelete" fx:id="btnDelete" layoutX="424.0" layoutY="257.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnModify" fx:id="btnModify" layoutX="421.0" layoutY="341.0" mnemonicParsing="false" onAction="#modifyProduct" text="Modify product">
+      <Button id="btnModify" fx:id="btnModify" layoutX="421.0" layoutY="312.0" mnemonicParsing="false" onAction="#modifyProduct" text="Modify product">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-      <Button id="btnCreate" fx:id="btnCreate" layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#createNewProduct" text="Create new menu">
+      <Button id="btnCreate" fx:id="btnCreate" layoutX="415.0" layoutY="367.0" mnemonicParsing="false" onAction="#createNewProduct" text="Create new menu">
       <font>
          <Font name="Bodoni MT" size="20.0" />
       </font>
       </Button>
-      <Button id="btnGenerateReports" fx:id="btnGenerateReports" layoutX="417.0" layoutY="459.0" mnemonicParsing="false" onAction="#generateReports" text="Generate reports">
+      <Button id="btnViewProducts" fx:id="btnViewProducts" layoutX="427.0" layoutY="482.0" mnemonicParsing="false" onAction="#viewProducts" text="View products">
          <font>
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Button>
-
+      <Button id="btnGenerateReports" fx:id="btnGenerateReports" layoutX="417.0" layoutY="424.0" mnemonicParsing="false" onAction="#generateReports" text="Generate reports">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Button>
       <Button id="btnGoBack" fx:id="btnGoBack" layoutX="857.0" layoutY="569.0" mnemonicParsing="false" onAction="#goBack" text="Go back">
          <font>
             <Font name="Bodoni MT" size="20.0" />

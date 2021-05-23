@@ -1,9 +1,7 @@
 package businessLayer;
 
-import javafx.scene.control.ListView;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +14,7 @@ public interface IDeliveryServiceProcessing {
     List<String> generateReportOfOrders(String startHour, String endHour);
     List<String> generateReportOfProducts(int noOfTimes);
     List<String> generateReportOfClients(int noOfClients, int amountOfOrder);
+    List<String> generateReportOfProductsOrderedInADay(LocalDate day);
     ArrayList<String> viewProducts();
     ArrayList<String> viewMenus();
     ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price);
