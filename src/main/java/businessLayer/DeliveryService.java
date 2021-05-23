@@ -96,7 +96,7 @@ public class DeliveryService implements IDeliveryServiceProcessing{
 
     @Override
     public List<String> generateReportOfProducts(int noOfTimes) {
-        return ProductsOrderedReport.getOrdersAccordingToProductsOrdered(noOfTimes, readOrders());
+        return ProductsOrderedReport.getProductsOrderedMoreThanNoOfTimes(noOfTimes, readOrders());
     }
 
     @Override
