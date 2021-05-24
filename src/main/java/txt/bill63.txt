@@ -1,0 +1,8 @@
+orderID: 63
+clientID: 2
+client username: alina
+ordered products: 
+ Daily menu 3, price=116
+   "Endive ""Spoons"" with Lemon-Herb Goat Cheese ", rating=4.375, calories=24, protein=1, fat=2, sodium=35, price=50
+   Toasted Corn Crisps , rating=2.5, calories=24, protein=0, fat=2, sodium=37, price=66
+total price: 116

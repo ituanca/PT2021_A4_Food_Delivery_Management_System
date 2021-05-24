@@ -1,0 +1,11 @@
+orderID: 64
+clientID: 12
+client username: darius
+ordered products: 
+ Daily menu 2, price=80
+   Quick & Spicy Asian Pickles , rating=5.0, calories=23, protein=3, fat=0, sodium=128, price=48
+   Cilantro-Tomato Salsa , rating=3.75, calories=23, protein=1, fat=0, sodium=7, price=32
+ Quick & Spicy Asian Pickles , rating=5.0, calories=23, protein=1, fat=0, sodium=128, price=48
+ Red and Green Tomato Salsa , rating=3.125, calories=23, protein=1, fat=0, sodium=552, price=38
+ Shrimp Sates with Spiced Pistachio Chutney , rating=3.75, calories=23, protein=1, fat=2, sodium=4, price=78
+total price: 244
