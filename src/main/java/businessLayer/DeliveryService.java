@@ -5,6 +5,8 @@ import businessLayer.reports.ProductsOrderedInADayReport;
 import businessLayer.reports.ProductsOrderedReport;
 import businessLayer.reports.TimeIntervalOfTheOrdersReport;
 import dataLayer.Serializator;
+import presentationLayer.EmployeeController;
+import presentationLayer.Observer;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -14,7 +16,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class DeliveryService implements IDeliveryServiceProcessing{
+public class DeliveryService extends Observable implements IDeliveryServiceProcessing {
 
     Map<Order, ArrayList<MenuItem>> ordersList = new HashMap<>();            // stores the order related information
     List<MenuItem> menu = new ArrayList<MenuItem>();                                // saves the menu (all the products) provided by the catering company
@@ -189,9 +191,27 @@ public class DeliveryService implements IDeliveryServiceProcessing{
     public void createOrder(ArrayList<MenuItem> selectedProducts) {
         ordersList = readOrders();
         UserSession instance = UserSession.getInstance();
+        System.out.println(instance);
         Order order = new Order(computeOrderId(), instance.getId(), LocalDateTime.now());
         ordersList.put(order, selectedProducts);
+        new TXTGenerator().generateTXT(order, getOrderPrice(selectedProducts), selectedProducts);
+        findEmployeesAndCreateObservers();
+        notifyObservers(ordersList);
         writeOrders();
+    }
+
+    private static int getOrderPrice(ArrayList<MenuItem> listOfProducts){
+        return listOfProducts.stream().mapToInt(MenuItem::getPrice).sum();
+    }
+
+    public void findEmployeesAndCreateObservers(){
+        ArrayList<User> users = readUsers();
+        for(User user : users){
+            if(user.getUserType().equals("employee")){
+                Observer observer = new EmployeeController();
+                addObserver(observer);
+            }
+        }
     }
 
     private Integer computeOrderId(){
@@ -246,4 +266,5 @@ public class DeliveryService implements IDeliveryServiceProcessing{
 
     private void writeOrders(){ new Serializator().serializeOrders(ordersList); }
 
+    public ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }
 }

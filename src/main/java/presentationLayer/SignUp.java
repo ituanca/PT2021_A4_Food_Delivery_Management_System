@@ -1,5 +1,6 @@
 package presentationLayer;
 
+import businessLayer.DeliveryService;
 import businessLayer.User;
 import businessLayer.UserSession;
 import dataLayer.FileManager;
@@ -75,7 +76,7 @@ public class SignUp implements Initializable, Window {
             int id = computeUserID(usersList);
 
             UserSession.setInstance(null);
-            System.out.println(UserSession.getInstance(id, getUsername(), getPassword(), getUserType()));
+            UserSession.getInstance(id, getUsername(), getPassword(), getUserType());
 
             User user = new User(id, getUsername(), getPassword(), getUserType());
             new FileManager().writeNewUser(user);
@@ -88,6 +89,8 @@ public class SignUp implements Initializable, Window {
                 Start.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
                 Start.openNextWindow("client", new ClientController());
+            } else if (getUserType().equals("employee")){
+                Start.openNextWindow("employee", new EmployeeController());
             }
             System.out.println(user.getId());
         }

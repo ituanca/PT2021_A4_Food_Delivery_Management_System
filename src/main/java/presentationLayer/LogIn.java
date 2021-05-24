@@ -1,5 +1,6 @@
 package presentationLayer;
 
+import businessLayer.DeliveryService;
 import businessLayer.User;
 import businessLayer.UserSession;
 import dataLayer.Serializator;
@@ -70,11 +71,13 @@ public class LogIn implements Initializable, Window {
     public void logIn(ActionEvent actionEvent) throws IOException {
         if(validate()) {
             UserSession.setInstance(null);
-            System.out.println(UserSession.getInstance(id, getUsername(), getPassword(), getUserType()));
+            UserSession.getInstance(id, getUsername(), getPassword(), getUserType());
             if (getUserType().equals("administrator")) {
                 Start.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
                 Start.openNextWindow("client", new ClientController());
+            }else if (getUserType().equals("employee")){
+                Start.openNextWindow("employee", new EmployeeController());
             }
         }
     }
