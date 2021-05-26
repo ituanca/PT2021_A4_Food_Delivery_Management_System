@@ -1,6 +1,5 @@
 package presentationLayer;
 
-import businessLayer.DeliveryService;
 import businessLayer.User;
 import businessLayer.UserSession;
 import dataLayer.Serializator;
@@ -73,11 +72,11 @@ public class LogIn implements Initializable, Window {
             UserSession.setInstance(null);
             UserSession.getInstance(id, getUsername(), getPassword(), getUserType());
             if (getUserType().equals("administrator")) {
-                Start.openNextWindow("administrator", new AdministratorController());
+                Controller.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
-                Start.openNextWindow("client", new ClientController());
+                Controller.openNextWindow("client", new ClientController());
             }else if (getUserType().equals("employee")){
-                Start.openNextWindow("employee", new EmployeeController());
+                Controller.openNextWindow("employee", new EmployeeController());
             }
         }
     }
@@ -85,7 +84,7 @@ public class LogIn implements Initializable, Window {
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
-        Start.create(nextWindow, scene);
+        Controller.create(nextWindow, scene);
     }
 
     private String getUsername() { return tfUsername.getText(); }

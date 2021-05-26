@@ -1,6 +1,6 @@
 package application;
 
-import controller.Controller;
+import presentationLayer.Controller;
 
 public class Main {
 

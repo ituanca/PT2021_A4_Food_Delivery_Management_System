@@ -33,7 +33,7 @@ public class TimeIntervalOfTheOrdersReport {
         return listOfProducts.toString();
     }
 
-    public static LocalDateTime getTimeFromString(String stringHour){
+    private static LocalDateTime getTimeFromString(String stringHour){
         if(stringHour.length() == 1) {
             return LocalDateTime.parse("2000-01-01T0" + stringHour + ":00:00");
         }else{

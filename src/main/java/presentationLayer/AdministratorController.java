@@ -40,33 +40,33 @@ public class AdministratorController implements Window{
     }
 
     public void addProduct(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("addProduct", new AddProductController());
+        Controller.openNextWindow("addProduct", new AddProductController());
     }
 
     public void deleteProduct(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("deleteProduct", new DeleteProductController());
+        Controller.openNextWindow("deleteProduct", new DeleteProductController());
     }
 
     public void modifyProduct(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("modifyProduct", new ModifyProductController());
+        Controller.openNextWindow("modifyProduct", new ModifyProductController());
     }
 
     public void createNewProduct(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("createNewProduct", new CreateNewProductController());
+        Controller.openNextWindow("createNewProduct", new CreateNewProductController());
     }
 
     public void viewProducts(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("viewProducts", new ViewProductsController());
+        Controller.openNextWindow("viewProducts", new ViewProductsController());
     }
 
     public void generateReports(ActionEvent actionEvent) throws IOException {
-        Start.openNextWindow("generateReports", new GenerateReportsController());
+        Controller.openNextWindow("generateReports", new GenerateReportsController());
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
-        Start.create(nextWindow, scene);
+        Controller.create(nextWindow, scene);
     }
 
 

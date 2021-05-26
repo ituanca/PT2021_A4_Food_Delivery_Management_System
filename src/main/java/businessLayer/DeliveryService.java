@@ -135,15 +135,21 @@ public class DeliveryService extends Observable implements IDeliveryServiceProce
     }
 
     @Override
-    public ArrayList<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {     // lambda expression
-        menuBaseProducts = readBaseProducts();
-        return getListOfProducts(
-                menuBaseProducts,
-                (BaseProduct product) ->
-                        (product.title.contains(title)) && ((product.rating == rating || rating == -1) && (calories == -1 || product.calories == calories) &&
-                                (product.protein == protein || protein == -1) && (product.fat == fat || fat == -1) && (product.sodium == sodium || sodium == -1) &&
-                                (product.price == price || price == -1))
-                       );
+    public List<String> searchForProduct(String title, double rating, int calories, int protein, int fat, int sodium, int price) {
+        return readBaseProducts().stream()
+               .filter(product ->  (product.title.contains(title)) && ((product.rating == rating || rating == -1) && (calories == -1 || product.calories == calories) &&
+                       (product.protein == protein || protein == -1) && (product.fat == fat || fat == -1) && (product.sodium == sodium || sodium == -1) &&
+                       (product.price == price || price == -1)))
+               .map(BaseProduct::toString)
+               .collect(Collectors.toList());
+
+//        return getListOfProducts(
+//                menuBaseProducts,
+//                (BaseProduct product) ->
+//                        (product.title.contains(title)) && ((product.rating == rating || rating == -1) && (calories == -1 || product.calories == calories) &&
+//                                (product.protein == protein || protein == -1) && (product.fat == fat || fat == -1) && (product.sodium == sodium || sodium == -1) &&
+//                                (product.price == price || price == -1))
+//                       );
     }
 
     public ArrayList<String> getListOfProducts(List<BaseProduct> roster, SearchingForProduct tester) {
@@ -157,7 +163,7 @@ public class DeliveryService extends Observable implements IDeliveryServiceProce
     }
 
     @Override
-    public ArrayList<String> searchForMenu(String itemTitle, int price) {       // lambda expression
+    public List<String> searchForMenu(String itemTitle, int price) {
         menuCompositeProducts = readCompositeProducts();
         return getListOfCompositeProducts(
                 menuCompositeProducts,
@@ -181,7 +187,7 @@ public class DeliveryService extends Observable implements IDeliveryServiceProce
         return resultedArrayList;
     }
 
-    public List<MenuItem> createTheEntireMenu(){
+    private List<MenuItem> createTheEntireMenu(){
         menu.addAll(readBaseProducts());
         menu.addAll(readCompositeProducts());
         return menu;
@@ -254,17 +260,17 @@ public class DeliveryService extends Observable implements IDeliveryServiceProce
         return null;
     }
 
-    public List<BaseProduct> readBaseProducts(){ return new Serializator().deserializeMenuBaseProducts(); }
+    private List<BaseProduct> readBaseProducts(){ return new Serializator().deserializeMenuBaseProducts(); }
 
     private void writeBaseProducts(){ new Serializator().serializeMenuBaseProducts(menuBaseProducts); }
 
-    public List<CompositeProduct> readCompositeProducts(){ return new Serializator().deserializeCompositeProducts(); }
+    private List<CompositeProduct> readCompositeProducts(){ return new Serializator().deserializeCompositeProducts(); }
 
     private void writeCompositeProducts(){ new Serializator().serializeCompositeProducts(menuCompositeProducts); }
 
-    public  HashMap<Order, ArrayList<MenuItem>> readOrders(){ return new Serializator().deserializeOrders(); }
+    private  HashMap<Order, ArrayList<MenuItem>> readOrders(){ return new Serializator().deserializeOrders(); }
 
     private void writeOrders(){ new Serializator().serializeOrders(ordersList); }
 
-    public ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }
+    private ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }
 }

@@ -166,7 +166,6 @@ public class ClientController implements Window, Initializable {
     }
 
     public void deleteSelection(ActionEvent actionEvent) {
-        deliveryService.createTheEntireMenu();
         if(listViewFinalOrder.getItems().size() > 0 && selectedProducts.size() > 0){
             listViewFinalOrder.getItems().remove(listViewFinalOrder.getItems().size() - 1);
             selectedProducts.remove(selectedProducts.size() - 1);
@@ -258,7 +257,7 @@ public class ClientController implements Window, Initializable {
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
-        Start.create(nextWindow, scene);
+        Controller.create(nextWindow, scene);
     }
 
 }

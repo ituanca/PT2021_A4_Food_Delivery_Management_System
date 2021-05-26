@@ -1,5 +1,6 @@
 package presentationLayer;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,10 +11,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class Start{
+public class Controller {
     private static Stage nextWindow;
     public Button btnLogIn;
     public Button btnSignUp;
+
+    public void start(){ new Thread(() -> Application.launch(InterfaceLoader.class)).start(); }
 
     public static void create(Stage window, Scene scene) {
         window.setScene(scene);

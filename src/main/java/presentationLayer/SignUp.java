@@ -1,6 +1,5 @@
 package presentationLayer;
 
-import businessLayer.DeliveryService;
 import businessLayer.User;
 import businessLayer.UserSession;
 import dataLayer.FileManager;
@@ -86,11 +85,11 @@ public class SignUp implements Initializable, Window {
             alert.setContentText("User created successfully");
             alert.show();
             if (getUserType().equals("administrator")) {
-                Start.openNextWindow("administrator", new AdministratorController());
+                Controller.openNextWindow("administrator", new AdministratorController());
             } else if (getUserType().equals("client")) {
-                Start.openNextWindow("client", new ClientController());
+                Controller.openNextWindow("client", new ClientController());
             } else if (getUserType().equals("employee")){
-                Start.openNextWindow("employee", new EmployeeController());
+                Controller.openNextWindow("employee", new EmployeeController());
             }
             System.out.println(user.getId());
         }
@@ -117,7 +116,7 @@ public class SignUp implements Initializable, Window {
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
-        Start.create(nextWindow, scene);
+        Controller.create(nextWindow, scene);
     }
 
      public ArrayList<User> readUsers(){ return new Serializator().deserializeUsers(); }

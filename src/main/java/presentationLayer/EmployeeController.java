@@ -1,6 +1,5 @@
 package presentationLayer;
 
-import businessLayer.DeliveryService;
 import businessLayer.MenuItem;
 import businessLayer.Order;
 import dataLayer.Serializator;
@@ -23,6 +22,8 @@ public class EmployeeController implements Observer, Window, Initializable {
     public ListView listViewOrders;
     public Button btnGoBack;
     public Label lblRecentOrder;
+    public Button btnProcessOrder;
+    public Label lblOrderID;
 
     @Override
     public void create(Stage window, Scene scene) {
@@ -34,12 +35,13 @@ public class EmployeeController implements Observer, Window, Initializable {
     public void viewOrders(ActionEvent actionEvent) {
         lblRecentOrder.setVisible(false);
         scrollPaneOrders.setVisible(true);
+        lblOrderID.setVisible(true);
+        btnProcessOrder.setVisible(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewOrders.getItems().addAll(convertOrdersListToString(readOrders()));
-        setInCaseOfUpdate();
     }
 
     @Override
@@ -57,12 +59,45 @@ public class EmployeeController implements Observer, Window, Initializable {
         return stringOrdersList;
     }
 
-    public HashMap<Order, ArrayList<MenuItem>> readOrders(){ return new Serializator().deserializeOrders(); }
+    public void processOrder(ActionEvent actionEvent) {
+        if(validate()){
+            Map<Order, ArrayList<MenuItem>> ordersList = readOrders();
+            String selectedItem = listViewOrders.getSelectionModel().getSelectedItem().toString();
+            String delims = "[ ,]+";
+            String[] tokens = selectedItem.split(delims);
+            extractOrder(Integer.parseInt(tokens[1]), ordersList);
+            writeOrders(ordersList);
+            listViewOrders.getItems().addAll(convertOrdersListToString(ordersList));
+        }
+    }
+
+    private void extractOrder(int id, Map<Order, ArrayList<MenuItem>> ordersList){
+        ordersList.forEach( (key, value) -> {
+            if(key.getOrderID() == id){
+                ordersList.remove(key);
+            }
+        });
+    }
+
+    private boolean validate(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if(listViewOrders.getSelectionModel().getSelectedItem() == null){
+            alert.setContentText("Select one order to process");
+            alert.show();
+            return false;
+        }
+        return true;
+    }
+
+    private HashMap<Order, ArrayList<MenuItem>> readOrders(){ return new Serializator().deserializeOrders(); }
+
+    private void writeOrders(Map<Order, ArrayList<MenuItem>> ordersList){ new Serializator().serializeOrders(ordersList); }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         URL url = new File("src\\main\\java\\presentationLayer\\fxmlFiles\\sample.fxml").toURI().toURL();
         Scene scene = new Scene( FXMLLoader.load(url), 1000, 640);
-        Start.create(nextWindow, scene);
+        Controller.create(nextWindow, scene);
     }
+
 
 }

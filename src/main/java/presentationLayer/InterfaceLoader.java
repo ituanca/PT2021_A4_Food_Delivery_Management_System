@@ -20,6 +20,6 @@ public class InterfaceLoader extends Application {
         stage.setTitle("Food delivery management system");
         Scene scene = new Scene(root, 1000, 640);
         window = stage;
-        Start.create(window, scene);
+        Controller.create(window, scene);
     }
 }

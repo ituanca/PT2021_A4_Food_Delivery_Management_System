@@ -69,12 +69,12 @@ public class ProductsOrderedInADayReport {
         return orderedProducts;
     }
 
-    public static void createTheEntireMenu(List<MenuItem> menu){
+    private static void createTheEntireMenu(List<MenuItem> menu){
         menu.addAll(readBaseProducts());
         menu.addAll(readCompositeProducts());
     }
 
-    public static List<BaseProduct> readBaseProducts(){ return new Serializator().deserializeMenuBaseProducts(); }
+    private static List<BaseProduct> readBaseProducts(){ return new Serializator().deserializeMenuBaseProducts(); }
 
-    public static List<CompositeProduct> readCompositeProducts(){ return new Serializator().deserializeCompositeProducts(); }
+    private static List<CompositeProduct> readCompositeProducts(){ return new Serializator().deserializeCompositeProducts(); }
 }

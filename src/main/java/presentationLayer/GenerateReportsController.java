@@ -220,6 +220,6 @@ public class GenerateReportsController implements Initializable, Window {
 
     public void goBack(ActionEvent actionEvent) throws IOException { goToAdministratorOptionsWindow(); }
 
-    private void goToAdministratorOptionsWindow() throws IOException { Start.openNextWindow("administrator", new AdministratorController()); }
+    private void goToAdministratorOptionsWindow() throws IOException { Controller.openNextWindow("administrator", new AdministratorController()); }
 
 }
