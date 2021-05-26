@@ -1,0 +1,11 @@
+orderID: 66
+clientID: 11
+client username: andrei12
+ordered products: 
+ Quick & Spicy Asian Pickles , rating=5.0, calories=23, protein=1, fat=0, sodium=128, price=48
+ Smoked Caviar and Hummus on Pita Toasts , rating=5.0, calories=23, protein=1, fat=2, sodium=49, price=79
+ Cilantro-Tomato Salsa , rating=3.75, calories=23, protein=1, fat=0, sodium=7, price=32
+ Daily menu 4, price=106
+   Ethiopian Spice Tea , rating=5.0, calories=23, protein=1, fat=0, sodium=13, price=49
+   Zinfandel Beef Stock , rating=3.75, calories=26, protein=2, fat=1, sodium=50, price=57
+total price: 265

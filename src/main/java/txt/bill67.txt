@@ -1,0 +1,7 @@
+orderID: 67
+clientID: 2
+client username: alina
+ordered products: 
+ Grilled Swordfish Verde , rating=4.375, calories=408, protein=45, fat=22, sodium=193, price=57
+ Broiled Swordfish à la Niçoise , rating=4.375, calories=609, protein=38, fat=31, sodium=243, price=37
+total price: 94

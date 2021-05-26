@@ -1,0 +1,7 @@
+orderID: 65
+clientID: 2
+client username: alina
+ordered products: 
+ Classic Salad , rating=4.375, calories=24, protein=2, fat=1, sodium=56, price=49
+ Master Stock Chicken , rating=3.75, calories=25, protein=2, fat=1, sodium=61, price=72
+total price: 121
