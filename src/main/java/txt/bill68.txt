@@ -1,0 +1,13 @@
+orderID: 68
+clientID: 2
+client username: alina
+ordered products: 
+ Eve's Wednesday Newspaper Eggplant Relish , rating=4.375, calories=226, protein=3, fat=20, sodium=384, price=65
+ Daily menu 1, price=200
+   Spicy Pickled Shallots , rating=0.0, calories=23, protein=1, fat=0, sodium=162, price=78
+   Beef Stock , rating=4.375, calories=24, protein=4, fat=1, sodium=87, price=26
+   Beef Stock , rating=4.375, calories=24, protein=4, fat=1, sodium=87, price=96
+ Daily menu 3, price=116
+   "Endive ""Spoons"" with Lemon-Herb Goat Cheese ", rating=4.375, calories=24, protein=1, fat=2, sodium=35, price=50
+   Toasted Corn Crisps , rating=2.5, calories=24, protein=0, fat=2, sodium=37, price=66
+total price: 381
